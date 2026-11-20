@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='2' y='2' width='8' height='8' rx='1.5' fill='%234fd1a5'/><rect x='12' y='2' width='8' height='8' rx='1.5' fill='%23999'/><rect x='22' y='2' width='8' height='8' rx='1.5' fill='%23999'/><rect x='2' y='12' width='8' height='8' rx='1.5' fill='%23999'/><rect x='12' y='12' width='8' height='8' rx='1.5' fill='%234fd1a5'/><rect x='22' y='12' width='8' height='8' rx='1.5' fill='%23999'/><rect x='2' y='22' width='8' height='8' rx='1.5' fill='%23999'/><rect x='12' y='22' width='8' height='8' rx='1.5' fill='%23999'/><rect x='22' y='22' width='8' height='8' rx='1.5' fill='%234fd1a5'/></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%234fd1a5'/><path d='M9 24V8h3l8 10.4V8h3v16h-3l-8-10.4V24z' fill='%23101214'/></svg>">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Navratna Minerals — mine-owning producer and exporter of bentonite, activated clay, kaolin and silica from Kutch, Gujarat.">
+<meta name="description" content="Narvanta Minerals — mine-owning producer and exporter of bentonite, activated clay, kaolin and silica from Kutch, Gujarat.">
 <style>html{scroll-behavior:smooth}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>Navratna Minerals Nine</title>
+<title>Narvanta Minerals Grid</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: a 3x3 modular bento board — the navratna grid is the layout system, one colour per mineral */
+/* Layout: a modular bento board — tiles are the layout system, one colour per mineral */
 :root{
   --bg:#101214; --surf:#181b1e; --surf2:#1f2327; --fg:#f4f6f7; --dim:#9aa3a9;
   --line:#2a2f34; --hot:#ff7a45; --mint:#4fd1a5; --violet:#9b8cff; --sun:#ffc94d;
@@ -29,9 +29,10 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(16,18,20,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:14px}
 .logo{display:flex;align-items:center;gap:13px}
-.nine{width:30px;height:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:3px;flex:none}
-.nine i{border-radius:2px;background:var(--line)}
-.nine i:nth-child(1){background:var(--hot)}.nine i:nth-child(5){background:var(--mint)}.nine i:nth-child(9){background:var(--sun)}
+.px{width:30px;height:30px;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;flex:none}
+.px i{border-radius:1.5px;background:var(--line)}
+.px i:nth-child(4n+1),.px i:nth-child(4n){background:var(--mint)}
+.px i:nth-child(6),.px i:nth-child(11){background:var(--hot)}
 .logo b{font-family:var(--f-d);font-size:1rem;display:block;line-height:1.1;letter-spacing:-.02em}
 .logo span{font-family:var(--f-m);font-size:.56rem;letter-spacing:.18em;color:var(--dim);text-transform:uppercase}
 nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:.88rem;color:var(--dim)}
@@ -129,10 +130,10 @@ footer a:hover{color:var(--mint)}
 </head>
 <body>
 
-<div class="demo">Design concept 06 · “Nine” — placeholder imagery &amp; indicative figures</div>
+<div class="demo">Design concept 06 · “Grid” — placeholder imagery &amp; indicative figures</div>
 
 <header><div class="wrap nav">
-  <a class="logo" href="#top"><span class="nine" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span><b>Navratna Minerals</b><span>Kutch · Gujarat</span></span></a>
+  <a class="logo" href="#top"><span class="px" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span><b>Narvanta Minerals</b><span>Kutch · Gujarat</span></span></a>
   <nav><ul><li><a href="#minerals">Minerals</a></li><li><a href="#process">Process</a></li><li><a href="#lab">Lab</a></li><li><a href="#sectors">Sectors</a></li><li><a href="#enquiry">Enquiry</a></li></ul></nav>
   <a class="btn" href="#enquiry">Request a quote</a>
 </div></header>
@@ -141,11 +142,11 @@ footer a:hover{color:var(--mint)}
   <div class="board">
     <div class="cell c-hero">
       <div>
-        <span class="m">Nine minerals · one lease belt · one standard</span>
-        <h1 style="margin-top:18px">Bentonite from Kutch, measured <em>nine ways</em></h1>
-        <p>We hold our own leases, dry and mill on site, and test every lot twice — before bagging and before loading. The grade on the certificate is the grade in the bag.</p>
+        <span class="m">Own leases · own mills · own lab</span>
+        <h1 style="margin-top:18px">Bentonite from Kutch, <em>tested twice</em></h1>
+        <p>We hold our own leases, dry and mill on site, and test every lot before bagging and again before loading. The grade on the certificate is the grade in the bag.</p>
       </div>
-      <div class="cta"><a class="btn" href="#minerals">See the nine</a><a class="btn btn-o" href="#lab">Latest lab results</a></div>
+      <div class="cta"><a class="btn" href="#minerals">See the grades</a><a class="btn btn-o" href="#lab">Latest lab results</a></div>
     </div>
     <div class="cell c-stat"><span class="m">Capacity</span><div><b>1,20,000</b><span style="display:block">MT per year, three mills</span></div></div>
     <div class="cell c-stat"><span class="m">Markets</span><div><b>24</b><span style="display:block">Countries, five continents</span></div></div>
@@ -174,7 +175,7 @@ footer a:hover{color:var(--mint)}
   </div>
 
   <section class="sec" id="minerals">
-    <div class="shead"><div><span class="m">The nine</span><h2 style="margin-top:12px">One grade per duty</h2></div><p>No catch-all industrial grade. Each is milled and blended for a single job, with a published typical analysis.</p></div>
+    <div class="shead"><div><span class="m">Grades</span><h2 style="margin-top:12px">One grade per duty</h2></div><p>No catch-all industrial grade. Each is milled and blended for a single job, with a published typical analysis.</p></div>
     <div class="tiles">
       <article class="tile" style="--c:#ff7a45"><div class="glyph"><b>01</b></div><h3>API Drilling</h3><p>High-yield sodium bentonite for water-well, HDD, piling and oilfield mud.</p><div class="foot"><i>32 cP</i><i>13.5 ml</i><i>API 13A</i></div></article>
       <article class="tile" style="--c:#ffc94d"><div class="glyph"><b>02</b></div><h3>Foundry Bond</h3><p>Natural and soda-activated binder for green-sand moulding, held to a GCS band.</p><div class="foot"><i>GCS 1.85</i><i>MB 34</i><i>200 mesh</i></div></article>
@@ -257,13 +258,13 @@ footer a:hover{color:var(--mint)}
 
 <footer><div class="wrap">
   <div class="fg">
-    <div><a class="logo" href="#top"><span class="nine" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span><b>Navratna Minerals</b><span>Kutch · Gujarat</span></span></a>
+    <div><a class="logo" href="#top"><span class="px" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span><b>Narvanta Minerals</b><span>Kutch · Gujarat</span></span></a>
       <p style="margin-top:14px;max-width:34ch">Mine-owning producer of bentonite, activated clay, kaolin and silica for drilling, foundry, steel, civil and refining industries.</p></div>
     <div><h5>Minerals</h5><ul><li><a href="#minerals">Drilling</a></li><li><a href="#minerals">Foundry</a></li><li><a href="#minerals">Pelletizing</a></li><li><a href="#minerals">Bleaching earth</a></li></ul></div>
     <div><h5>Company</h5><ul><li><a href="#process">Process</a></li><li><a href="#lab">Lab</a></li><li><a href="#sectors">Sectors</a></li><li><a href="#enquiry">Enquiry</a></li></ul></div>
     <div><h5>Contact</h5><ul><li>Placeholder address</li><li>Placeholder phone</li><li>Placeholder email</li></ul></div>
   </div>
-  <div class="fb"><span>© 2026 Navratna Minerals — concept layout</span><span>Figures indicative · imagery placeholder</span></div>
+  <div class="fb"><span>© 2026 Narvanta Minerals — concept layout</span><span>Figures indicative · imagery placeholder</span></div>
 </div></footer>
 
 <script>

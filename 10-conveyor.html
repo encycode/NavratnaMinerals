@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23f4c20d'/><path d='M9 24V8h3l8 10.4V8h3v16h-3l-8-10.4V24z' fill='%2316181b'/></svg>">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Narvanta Minerals — bentonite from pit to port.">
+<title>Narvanta Minerals Conveyor</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Saira+Stencil+One&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: the plant as a moving line — live belt in the hero, a pinned horizontal ride through seven stations, bag-label product cards */
+:root{
+  --char:#16181b; --steel:#24282d; --steel2:#30353b; --yel:#f4c20d; --yel2:#ffd84a; --conc:#e6e3dc; --paper:#f7f5ee; --kraft:#d9c7a3;
+  --fg:#f2f1ec; --dim:#a4a7ab; --ink:#16181b; --idim:#5e6166; --line:rgba(242,241,236,.12); --iline:#cfcac0; --red:#c4402f;
+  --f-d:'Archivo',Impact,sans-serif; --f-s:'Saira Stencil One',Impact,sans-serif; --f-m:'IBM Plex Mono',ui-monospace,monospace;
+  --hh:64px; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--char);color:var(--fg);font-family:var(--f-d);font-stretch:100%;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+[hidden]{display:none!important}
+.wrap{max-width:1260px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3,h4{font-family:var(--f-d);font-stretch:125%;font-weight:900;margin:0;line-height:.9;text-transform:uppercase;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0}a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--yel);outline-offset:3px}
+.m{font-family:var(--f-m);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.demo{background:var(--yel);color:var(--ink);font-family:var(--f-m);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:7px 12px;font-weight:600}
+
+header{position:sticky;top:0;z-index:40;background:var(--char);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;height:var(--hh)}
+.logo{display:flex;align-items:center;gap:12px}
+.logo svg{width:34px;height:34px;flex:none}
+.logo b{font-stretch:125%;font-weight:900;font-size:1.06rem;text-transform:uppercase;display:block;line-height:1;letter-spacing:.01em}
+.logo span{font-family:var(--f-m);font-size:.56rem;letter-spacing:.16em;color:var(--dim);text-transform:uppercase}
+nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-family:var(--f-m);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+nav a:hover{color:var(--yel)}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-m);font-weight:600;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;padding:13px 20px;background:var(--yel);color:var(--ink);border:2px solid var(--yel);transition:.15s}
+.btn:hover{background:var(--yel2);border-color:var(--yel2);transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--fg)}
+.btn-o{background:transparent;color:inherit;border-color:currentColor}
+.btn-o:hover{background:transparent;box-shadow:4px 4px 0 var(--yel)}
+@media(max-width:980px){nav ul{display:none}}
+
+/* ---------- hero with live belt ---------- */
+.hero{position:relative;overflow:hidden;padding-top:60px;background:radial-gradient(70% 60% at 80% 0%,rgba(244,194,13,.1),transparent 60%)}
+.hero h1{font-size:clamp(3.4rem,11.5vw,10.4rem);line-height:.84;letter-spacing:-.02em;position:relative}
+.biggear{position:absolute;right:-140px;top:-60px;width:min(560px,50vw);opacity:.16;pointer-events:none;animation:spin 48s linear infinite}
+.biggear.sm{right:max(120px,24vw);top:200px;width:min(220px,20vw);animation-duration:22s;animation-direction:reverse;opacity:.12}
+.hero .wrap{position:relative;z-index:1}
+@media(max-width:860px){.biggear{width:300px;right:-120px;top:-40px}.biggear.sm{display:none}}
+.hero h1 .y{color:var(--yel)}
+.hero h1 .stroke{color:transparent;-webkit-text-stroke:2px var(--fg)}
+.hsub{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:end;margin-top:30px}
+.hsub .lede{font-family:var(--f-d);font-size:1.12rem;color:var(--dim);max-width:46ch}
+.cta{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+.odos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.odos div{background:var(--char);padding:16px 14px}
+.odos span.lb{font-family:var(--f-m);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);display:block;margin-top:6px}
+.odo{display:inline-flex;font-family:var(--f-m);font-weight:600;font-size:1.7rem;line-height:1;height:1em;overflow:hidden;color:var(--yel)}
+.odo .dg{display:inline-block;height:1em;overflow:hidden}
+.odo .col{display:flex;flex-direction:column;transition:transform 1.8s cubic-bezier(.2,.9,.25,1)}
+.odo .col span{height:1em;display:block}
+@media(max-width:860px){.hsub{grid-template-columns:1fr;gap:28px}}
+
+.line{position:relative;height:230px;margin-top:40px}
+.hopper{position:absolute;left:6%;top:0;width:120px;height:110px}
+.grain{animation:grain 1.1s linear infinite}
+@keyframes grain{from{transform:translateY(0);opacity:1}to{transform:translateY(80px);opacity:.9}}
+.belt{position:absolute;left:0;right:0;bottom:46px;height:26px;background:repeating-linear-gradient(90deg,#2b2f34 0 18px,#1d2024 18px 36px);animation:tread .9s linear infinite;border-top:2px solid #3a3f45;border-bottom:2px solid #0e1012}
+@keyframes tread{to{background-position:36px 0}}
+.rollers{position:absolute;left:0;right:0;bottom:12px;height:34px;display:flex;justify-content:space-around}
+.roller{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle,#4a5057 0 22%,#2a2e33 23% 60%,#3a3f45 61%);border:2px solid #0e1012;position:relative;animation:spin 1s linear infinite}
+.roller::after{content:"";position:absolute;left:50%;top:2px;bottom:2px;width:2px;margin-left:-1px;background:#0e1012}
+@keyframes spin{to{transform:rotate(360deg)}}
+.legs{position:absolute;left:0;right:0;bottom:0;height:14px;background:repeating-linear-gradient(90deg,transparent 0 120px,#30353b 120px 128px)}
+.rider{position:absolute;bottom:72px;left:0;animation:ride 16s linear infinite;animation-delay:calc(var(--i) * -2.66s)}
+@keyframes ride{from{transform:translateX(-140px)}to{transform:translateX(calc(100vw + 40px))}}
+.minibag{width:86px;height:70px;background:var(--paper);clip-path:polygon(6% 0,94% 0,100% 100%,0 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--ink);box-shadow:inset 0 -8px 0 rgba(0,0,0,.06)}
+.minibag b{font-family:var(--f-s);font-size:.72rem;letter-spacing:.04em;font-weight:400}
+.minibag i{font-style:normal;font-family:var(--f-m);font-size:.5rem;padding:1px 5px;background:var(--band,#f4c20d)}
+@media(max-width:700px){.line{height:190px}.hopper{display:none}}
+
+/* ---------- hazard tape ---------- */
+.tape{background:repeating-linear-gradient(-45deg,var(--yel) 0 22px,var(--char) 22px 44px);padding:10px 0;overflow:hidden}
+.tape div{background:var(--char);white-space:nowrap;overflow:hidden}
+.tape p{display:inline-flex;gap:40px;padding:10px 0;font-family:var(--f-d);font-stretch:125%;font-weight:900;font-size:1.05rem;text-transform:uppercase;color:var(--yel);animation:mq 30s linear infinite}
+.tape p span::after{content:"▲";margin-left:40px;font-size:.7rem;vertical-align:2px;color:var(--fg)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- pinned horizontal yard ---------- */
+.ytrack{position:relative}
+.ystick{position:sticky;top:var(--hh);height:calc(100svh - var(--hh));overflow:hidden;display:flex;flex-direction:column;background:linear-gradient(180deg,var(--char),#1b1e22)}
+.ystick>.wrap{width:100%}
+.hud{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-block:22px}
+.hud h2{font-size:clamp(1.4rem,3vw,2.2rem)}
+.hud .st{font-family:var(--f-m);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--yel);text-align:right;white-space:nowrap}
+.row{display:flex;gap:28px;flex:1;align-items:center;will-change:transform;padding-left:max(16px,calc((100vw - 1260px)/2 + 16px));padding-right:10vw}
+.station{flex:none;width:min(78vw,700px);height:min(62vh,470px);background:var(--steel);border:1px solid var(--line);display:grid;grid-template-rows:auto 1fr;position:relative;overflow:hidden}
+.station .hd{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;padding:22px 24px 0}
+.station .no{font-family:var(--f-d);font-stretch:125%;font-weight:900;font-size:4.4rem;line-height:.8;color:transparent;-webkit-text-stroke:1.5px var(--yel)}
+.station h3{font-size:1.9rem;text-align:right}
+.station p{font-size:.92rem;color:var(--dim);text-align:right;max-width:34ch;margin-top:8px;margin-left:auto}
+.station svg{width:100%;height:100%;display:block}
+.station .ill{position:relative;min-height:0}
+.station .kpi{position:absolute;left:24px;bottom:18px;font-family:var(--f-m);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--yel);background:rgba(22,24,27,.8);padding:6px 10px;border:1px solid rgba(244,194,13,.35)}
+.yardbelt{position:relative;height:64px;flex:none}
+.yardbelt .tread{position:absolute;left:0;right:0;top:16px;height:16px;background:repeating-linear-gradient(90deg,#2b2f34 0 16px,#1d2024 16px 32px);animation:tread .7s linear infinite}
+.yardbelt .ticks{position:absolute;left:0;right:0;top:38px;display:flex;justify-content:space-between;font-family:var(--f-m);font-size:.6rem;color:var(--dim);letter-spacing:.06em}
+.truckm{position:absolute;top:0;left:0;transform:translateX(-50%);transition:left .1s linear}
+@media(max-width:700px){.station{height:60vh}.station .no{font-size:3rem}.station h3{font-size:1.4rem}.station p{font-size:.84rem}}
+
+/* illustration motion */
+.swing{transform-box:view-box;transform-origin:250px 170px;animation:swing 3.6s ease-in-out infinite}
+@keyframes swing{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(12deg)}}
+.boom{animation:boom 6s ease-in-out infinite}
+@keyframes boom{0%,100%{transform:translateX(-60px)}50%{transform:translateX(80px)}}
+.drum{animation:drum .8s linear infinite}
+@keyframes drum{to{transform:translateX(-24px)}}
+.heat{animation:heat 1.8s ease-in-out infinite}
+@keyframes heat{0%{transform:translateY(0);opacity:0}30%{opacity:.8}100%{transform:translateY(-40px);opacity:0}}
+.gear{transform-box:fill-box;transform-origin:center;animation:spin 4s linear infinite}
+.gear.rev{animation-direction:reverse;animation-duration:2.6s}
+.drop{animation:dropb 2.4s cubic-bezier(.5,0,.75,0) infinite}
+@keyframes dropb{0%{transform:translateY(-120px);opacity:0}15%{opacity:1}55%{transform:translateY(0)}100%{transform:translateY(0);opacity:1}}
+.wheel{transform-box:fill-box;transform-origin:center;animation:spin .6s linear infinite}
+.road{animation:road .5s linear infinite}
+@keyframes road{to{transform:translateX(-40px)}}
+.bob{animation:bob 3.4s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(5px) rotate(.6deg)}}
+.crane{transform-box:view-box;transform-origin:120px 60px;animation:crane 5s ease-in-out infinite}
+@keyframes crane{0%,100%{transform:rotate(0)}50%{transform:rotate(18deg)}}
+.dust{animation:heat 2.4s ease-out infinite}
+
+/* ---------- bag-label products ---------- */
+.bags-sec{background:var(--conc);color:var(--ink)}
+.bags-sec .m{color:var(--idim)}
+.pad{padding-block:96px}
+@media(max-width:700px){.pad{padding-block:60px}}
+.shead{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:46px}
+.shead h2{font-size:clamp(2.2rem,6vw,4.6rem)}
+.shead p{max-width:46ch;color:var(--idim)}
+.bags{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px 22px}
+.bag{position:relative;background:
+  repeating-linear-gradient(0deg,rgba(0,0,0,.025) 0 2px,transparent 2px 5px),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.025) 0 2px,transparent 2px 5px),var(--paper);
+  clip-path:polygon(3% 0,97% 0,100% 100%,0 100%);padding:30px 26px 22px;color:var(--ink);transition:transform .35s cubic-bezier(.3,1.4,.5,1);filter:drop-shadow(0 10px 14px rgba(0,0,0,.12))}
+.bag:hover{transform:translateY(-10px) rotate(-1.2deg)}
+.bag:nth-child(even):hover{transform:translateY(-10px) rotate(1.2deg)}
+.bag .stitch{position:absolute;left:5%;right:5%;top:12px;border-top:2px dashed rgba(0,0,0,.25)}
+.bag .brand{font-family:var(--f-s);font-size:2.2rem;line-height:1;letter-spacing:.02em;text-align:center}
+.bag .sub{font-family:var(--f-m);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;text-align:center;color:var(--idim);margin-top:4px}
+.bag .band{margin:16px -26px 0;background:var(--band);padding:8px 26px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.bag .band b{font-family:var(--f-d);font-stretch:125%;font-weight:900;font-size:1.12rem;text-transform:uppercase;line-height:1}
+.bag .band span{font-family:var(--f-m);font-size:.66rem;font-weight:600}
+.bag ul{list-style:none;padding:0;margin:16px 0 0;font-family:var(--f-m);font-size:.74rem}
+.bag li{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px dotted rgba(0,0,0,.25)}
+.bag li b{font-weight:600}
+.bag .net{display:flex;justify-content:space-between;align-items:flex-end;margin-top:16px}
+.bag .net strong{font-family:var(--f-s);font-weight:400;font-size:1.5rem;line-height:1}
+.bag .net svg{width:84px;height:26px}
+.bag .use{font-size:.84rem;color:var(--idim);margin-top:12px;line-height:1.45}
+@media(max-width:940px){.bags{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:580px){.bags{grid-template-columns:1fr}}
+
+/* ---------- COA ---------- */
+.coa-sec{background:#1b1e22}
+.coa-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center}
+.coa{position:relative;overflow:hidden;background:var(--paper);color:var(--ink);padding:30px 28px 92px;font-family:var(--f-m);font-size:.8rem;box-shadow:0 30px 60px -30px rgba(0,0,0,.8);transform:rotate(-1deg)}
+.coa h4{font-family:var(--f-d);font-stretch:125%;font-weight:900;font-size:1.2rem}
+.coa .meta{display:grid;grid-template-columns:1fr 1fr;gap:4px 18px;margin:14px 0;color:var(--idim);font-size:.72rem}
+.coa table{width:100%;border-collapse:collapse;min-width:420px}
+.coa th,.coa td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--iline)}
+.coa th{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--idim)}
+.coa td{font-variant-numeric:tabular-nums}
+.tw{overflow-x:auto}
+.stampx{position:absolute;right:30px;bottom:20px;border:3px solid var(--red);color:var(--red);font-family:var(--f-s);font-size:1.5rem;padding:6px 14px;transform:rotate(-14deg) scale(2.4);opacity:0;transition:transform .35s cubic-bezier(.5,1.8,.5,1),opacity .2s;letter-spacing:.06em}
+.stampx.in{opacity:.85;transform:rotate(-14deg) scale(1)}
+.coa-grid>*{min-width:0}
+@media(max-width:900px){.coa-grid{grid-template-columns:minmax(0,1fr);gap:34px}.coa{transform:none}}
+@media(max-width:520px){.coa{padding:24px 16px 88px}}
+
+/* ---------- sectors ---------- */
+.secs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.sc{background:var(--char);padding:26px 22px;position:relative;overflow:hidden;transition:background .25s}
+.sc::before{content:"";position:absolute;left:0;top:0;right:0;height:6px;background:repeating-linear-gradient(-45deg,var(--yel) 0 8px,var(--char) 8px 16px);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.sc:hover{background:var(--steel)}
+.sc:hover::before{transform:scaleX(1)}
+.sc .n{font-family:var(--f-m);font-size:.66rem;color:var(--yel)}
+.sc h4{font-size:1.22rem;margin:14px 0 8px}
+.sc p{font-size:.88rem;color:var(--dim)}
+@media(max-width:920px){.secs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.secs{grid-template-columns:1fr}}
+
+/* ---------- loading order form ---------- */
+.order{background:var(--paper);color:var(--ink);padding:38px 34px;position:relative;max-width:980px;margin:0 auto}
+.order::before{content:"";position:absolute;left:0;right:0;top:0;height:10px;background:repeating-linear-gradient(-45deg,var(--yel) 0 14px,var(--ink) 14px 28px)}
+.order .top{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:16px;margin-top:6px}
+.order .top h2{font-size:clamp(1.8rem,4.6vw,3rem)}
+.order .top .m{color:var(--idim);text-align:right}
+form{display:grid;grid-template-columns:1fr 1fr;gap:0 26px;margin-top:10px}
+.fi{border-bottom:1px solid var(--iline);padding:14px 0}
+.fi.full{grid-column:1/-1}
+label{display:block;font-family:var(--f-m);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--idim);margin-bottom:4px}
+input,select,textarea{width:100%;border:0;background:transparent;color:var(--ink);font-family:var(--f-d);font-size:1.02rem;padding:2px 0}
+input:focus,select:focus,textarea:focus{outline:none}
+.fi:focus-within{border-color:var(--ink);box-shadow:0 1px 0 var(--ink)}
+.sub{grid-column:1/-1;display:flex;gap:18px;align-items:center;flex-wrap:wrap;padding-top:22px}
+.sub .btn:hover{box-shadow:4px 4px 0 var(--ink)}
+.note{font-size:.82rem;color:var(--idim)}
+@media(max-width:600px){form{grid-template-columns:1fr}.order{padding:30px 18px}}
+
+footer{border-top:1px solid var(--line);padding-block:56px 34px;color:var(--dim);font-size:.9rem}
+.fg{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px}
+footer h5{font-family:var(--f-m);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fg);margin:0 0 13px}
+footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px}
+footer a:hover{color:var(--yel)}
+.fb{margin-top:42px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:var(--f-m);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase}
+@media(max-width:760px){.fg{grid-template-columns:1fr 1fr}}
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+@media(max-width:560px){.logo>span>span{display:none}.logo b{font-size:1rem}.nav>.btn{padding:9px 14px;font-size:.74rem;white-space:nowrap}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}.stampx{opacity:.85;transform:rotate(-14deg)}}
+</style>
+</head>
+<body>
+<div class="demo">Design concept 10 · “Conveyor” — placeholder imagery &amp; indicative figures</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="nm" viewBox="0 0 34 34"><rect width="34" height="34" fill="#f4c20d"/><path d="M0 26h34v8H0z" fill="#16181b"/><path d="M4 26l4 8M12 26l4 8M20 26l4 8M28 26l4 8" stroke="#f4c20d" stroke-width="2.4"/><path d="M9 22V5h3.4l8 10.4V5H24v17h-3.4L12.6 11.6V22z" fill="#16181b"/></symbol>
+  <symbol id="barcode" viewBox="0 0 84 26"><path d="M2 0v26M5 0v26M6.5 0v26M10 0v26M13 0v26M14.5 0v26M18 0v26M22 0v26M23.5 0v26M27 0v26M30 0v26M33 0v26M34.5 0v26M38 0v26M42 0v26M43.5 0v26M47 0v26M50 0v26M51.5 0v26M55 0v26M59 0v26M60.5 0v26M64 0v26M67 0v26M70 0v26M71.5 0v26M75 0v26M79 0v26M82 0v26" stroke="#16181b" stroke-width="1.2"/></symbol>
+</defs></svg>
+
+<header><div class="wrap nav">
+  <a class="logo" href="#top"><svg aria-hidden="true"><use href="#nm"/></svg><span><b>Narvanta Minerals</b><span>Pit to port · Kutch</span></span></a>
+  <nav><ul><li><a href="#yard">The yard</a></li><li><a href="#bags">Grades</a></li><li><a href="#coa">Quality</a></li><li><a href="#sectors">Sectors</a></li><li><a href="#order">Order</a></li></ul></nav>
+  <a class="btn" href="#order">Place enquiry</a>
+</div></header>
+
+<section class="hero" id="top">
+  <svg class="biggear" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="84" fill="none" stroke="#f4c20d" stroke-width="22" stroke-dasharray="16 12"/><circle cx="100" cy="100" r="62" fill="none" stroke="#f4c20d" stroke-width="3"/><circle cx="100" cy="100" r="20" fill="#f4c20d"/><path d="M100 38v124M38 100h124M56 56l88 88M144 56l-88 88" stroke="#f4c20d" stroke-width="6"/></svg>
+  <svg class="biggear sm" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="80" fill="none" stroke="#f2f1ec" stroke-width="26" stroke-dasharray="18 14"/><circle cx="100" cy="100" r="24" fill="#f2f1ec"/></svg>
+  <div class="wrap">
+    <span class="m">Bentonite · activated clay · kaolin · silica · Kutch, Gujarat</span>
+    <h1 style="margin-top:18px">Pit <span class="stroke">to</span> <span class="y">port.</span></h1>
+    <div class="hsub">
+      <div>
+        <p class="lede">We dig it, dry it, mill it, bag it and truck it to Mundra ourselves. One company on every metre of the line, so nothing waits in someone else's yard.</p>
+        <div class="cta"><a class="btn" href="#yard">Ride the line →</a><a class="btn btn-o" href="#bags">Read the bags</a></div>
+      </div>
+      <div class="odos">
+        <div><span class="odo" data-v="120000" data-fmt="in"></span><span class="lb">MT / year</span></div>
+        <div><span class="odo" data-v="1500" data-fmt="in"></span><span class="lb">MT loaded / day</span></div>
+        <div><span class="odo" data-v="62"></span><span class="lb">km to Mundra</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="line" aria-hidden="true">
+    <svg class="hopper" viewBox="0 0 120 110"><path d="M10 0h100L76 50H44z" fill="#30353b"/><path d="M44 50h32v10H44z" fill="#24282d"/><g fill="#c9a676"><circle class="grain" cx="54" cy="64" r="3"/><circle class="grain" cx="62" cy="62" r="2.5" style="animation-delay:.3s"/><circle class="grain" cx="68" cy="66" r="3" style="animation-delay:.6s"/><circle class="grain" cx="58" cy="60" r="2" style="animation-delay:.85s"/></g><text x="60" y="30" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#f4c20d">HOPPER 02</text></svg>
+    <div class="rider" style="--i:0"><div class="minibag" style="--band:#f4c20d"><b>NARVANTA</b><i>API DRILLING</i></div></div>
+    <div class="rider" style="--i:1"><div class="minibag" style="--band:#e8743b"><b>NARVANTA</b><i>FOUNDRY</i></div></div>
+    <div class="rider" style="--i:2"><div class="minibag" style="--band:#5fb3a1"><b>NARVANTA</b><i>PELLETIZING</i></div></div>
+    <div class="rider" style="--i:3"><div class="minibag" style="--band:#7fa7d9"><b>NARVANTA</b><i>CIVIL</i></div></div>
+    <div class="rider" style="--i:4"><div class="minibag" style="--band:#c9a676"><b>NARVANTA</b><i>BLEACHING</i></div></div>
+    <div class="rider" style="--i:5"><div class="minibag" style="--band:#b48ad6"><b>NARVANTA</b><i>KAOLIN</i></div></div>
+    <div class="belt"></div>
+    <div class="rollers"><span class="roller"></span><span class="roller"></span><span class="roller"></span><span class="roller"></span><span class="roller"></span><span class="roller"></span><span class="roller"></span><span class="roller"></span></div>
+    <div class="legs"></div>
+  </div>
+</section>
+
+<div class="tape" aria-hidden="true"><div><p><span>Own leases</span><span>Own dryers</span><span>Own mills</span><span>Own lab</span><span>Own fleet</span><span>Mundra 62 km</span><span>COA every lot</span><span>Own leases</span><span>Own dryers</span><span>Own mills</span><span>Own lab</span><span>Own fleet</span><span>Mundra 62 km</span><span>COA every lot</span></p></div></div>
+
+<section class="yard" id="yard">
+  <div class="ytrack" id="ytrack">
+    <div class="ystick" id="ystick">
+      <div class="wrap hud"><h2>The line, station by station</h2><span class="st" id="hud">Station 01 / 07 · Pit</span></div>
+      <div class="row" id="row">
+        <article class="station"><div class="hd"><span class="no">01</span><div><h3>Pit</h3><p>Benches worked by grade. Face samples tested before a truck is loaded.</p></div></div>
+          <div class="ill"><svg viewBox="0 0 700 300" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><path d="M0 230h700v70H0z" fill="#3a3026"/><path d="M0 200h300l30 30H0z" fill="#5a4636"/><path d="M0 170h220l30 30H0z" fill="#6b5a3e"/><rect x="280" y="176" width="120" height="44" rx="4" fill="#f4c20d"/><rect x="290" y="150" width="46" height="30" fill="#e0b20b"/><rect x="280" y="218" width="130" height="16" rx="8" fill="#16181b"/><g class="swing"><path d="M290 176 L190 120 L198 110 L298 166z" fill="#f4c20d"/><path d="M190 115 L160 170 L172 174 L202 120z" fill="#e0b20b"/><path d="M152 166h34l-6 22h-22z" fill="#16181b"/></g><circle class="dust" cx="170" cy="196" r="10" fill="#c9a676" fill-opacity=".5"/><rect x="460" y="190" width="140" height="40" fill="#30353b"/><rect x="600" y="198" width="44" height="32" fill="#24282d"/><circle cx="490" cy="234" r="12" fill="#16181b"/><circle cx="620" cy="234" r="12" fill="#16181b"/></svg><span class="kpi">4 leases · 9 m pay zone</span></div></article>
+        <article class="station"><div class="hd"><span class="no">02</span><div><h3>Stockyard</h3><p>Lots blended to the order's swelling index and methylene-blue value.</p></div></div>
+          <div class="ill"><svg viewBox="0 0 700 300" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><path d="M0 250h700v50H0z" fill="#24282d"/><path d="M60 250l90-110 90 110z" fill="#6b5a3e"/><path d="M230 250l100-130 100 130z" fill="#b07a3c"/><path d="M420 250l90-100 90 100z" fill="#8a7a5a"/><g class="boom"><path d="M280 60h200v10H280z" fill="#f4c20d"/><path d="M380 70v40" stroke="#f4c20d" stroke-width="4"/><g fill="#c9a676"><circle class="grain" cx="380" cy="116" r="3"/><circle class="grain" cx="384" cy="112" r="2.4" style="animation-delay:.4s"/><circle class="grain" cx="376" cy="114" r="2.6" style="animation-delay:.7s"/></g></g><rect x="370" y="40" width="20" height="210" fill="#30353b"/><g font-family="IBM Plex Mono, monospace" font-size="11" fill="#a4a7ab"><text x="150" y="272" text-anchor="middle">LOT A · SWELL 28</text><text x="330" y="272" text-anchor="middle" fill="#f4c20d">LOT B · SWELL 32</text><text x="510" y="272" text-anchor="middle">LOT C · Ca</text></g></svg><span class="kpi">Target swell ±1 ml</span></div></article>
+        <article class="station"><div class="hd"><span class="no">03</span><div><h3>Dryer</h3><p>Rotary drying to 10–12% moisture without over-firing the clay.</p></div></div>
+          <div class="ill"><svg viewBox="0 0 700 300" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><defs><clipPath id="drumc"><rect x="150" y="120" width="400" height="90" rx="45"/></clipPath><pattern id="hoop" width="24" height="90" patternUnits="userSpaceOnUse"><rect width="24" height="90" fill="#3a3f45"/><rect width="5" height="90" fill="#24282d"/></pattern></defs><g clip-path="url(#drumc)"><rect class="drum" x="150" y="120" width="430" height="90" fill="url(#hoop)"/></g><rect x="150" y="120" width="400" height="90" rx="45" fill="none" stroke="#f4c20d" stroke-width="3"/><path d="M200 210l-20 50M500 210l20 50" stroke="#30353b" stroke-width="10"/><path d="M80 150h70v30H80z" fill="#c4402f"/><g fill="none" stroke="#e8743b" stroke-width="3" stroke-linecap="round"><path class="heat" d="M300 110c-8-10 8-14 0-26"/><path class="heat" d="M360 110c-8-10 8-14 0-26" style="animation-delay:.6s"/><path class="heat" d="M420 110c-8-10 8-14 0-26" style="animation-delay:1.2s"/></g><text x="350" y="290" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#a4a7ab">ROTARY DRYER · 650 °C INLET</text></svg><span class="kpi">Moisture out ≤ 10%</span></div></article>
+        <article class="station"><div class="hd"><span class="no">04</span><div><h3>Mill</h3><p>Raymond and micronising mills grind to 200, 325 or 400 mesh.</p></div></div>
+          <div class="ill"><svg viewBox="0 0 700 300" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><circle class="gear" cx="280" cy="170" r="70" fill="none" stroke="#f4c20d" stroke-width="18" stroke-dasharray="14 10"/><circle cx="280" cy="170" r="56" fill="#30353b"/><circle cx="280" cy="170" r="14" fill="#16181b"/><circle class="gear rev" cx="408" cy="150" r="46" fill="none" stroke="#a4a7ab" stroke-width="14" stroke-dasharray="11 8"/><circle cx="408" cy="150" r="36" fill="#3a3f45"/><circle cx="408" cy="150" r="10" fill="#16181b"/><g fill="#e6e3dc" fill-opacity=".7"><circle class="heat" cx="480" cy="230" r="2"/><circle class="heat" cx="500" cy="240" r="2.4" style="animation-delay:.5s"/><circle class="heat" cx="520" cy="226" r="1.8" style="animation-delay:1s"/><circle class="heat" cx="540" cy="238" r="2.2" style="animation-delay:1.4s"/></g><text x="560" y="200" font-family="IBM Plex Mono, monospace" font-size="11" fill="#a4a7ab">325 MESH</text><text x="560" y="216" font-family="IBM Plex Mono, monospace" font-size="11" fill="#f4c20d">95% PASS</text></svg><span class="kpi">On-line sieve every 30 min</span></div></article>
+        <article class="station"><div class="hd"><span class="no">05</span><div><h3>Bagging</h3><p>50 kg bags, 1–1.5 MT jumbos or bulk liners. Every lot gets a COA.</p></div></div>
+          <div class="ill"><svg viewBox="0 0 700 300" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><path d="M300 0h100v60l-20 20h-60l-20-20z" fill="#30353b"/><rect x="200" y="250" width="300" height="16" fill="#8a6a3e"/><rect x="210" y="266" width="20" height="14" fill="#6b5233"/><rect x="470" y="266" width="20" height="14" fill="#6b5233"/><rect x="340" y="266" width="20" height="14" fill="#6b5233"/><g><rect x="230" y="210" width="76" height="40" rx="6" fill="#f7f5ee"/><rect x="312" y="210" width="76" height="40" rx="6" fill="#f7f5ee"/><rect x="394" y="210" width="76" height="40" rx="6" fill="#f7f5ee"/><rect x="230" y="210" width="76" height="8" fill="#f4c20d"/><rect x="312" y="210" width="76" height="8" fill="#f4c20d"/><rect x="394" y="210" width="76" height="8" fill="#f4c20d"/></g><g class="drop"><rect x="312" y="168" width="76" height="40" rx="6" fill="#f7f5ee"/><rect x="312" y="168" width="76" height="8" fill="#f4c20d"/><text x="350" y="198" text-anchor="middle" font-family="Saira Stencil One, sans-serif" font-size="12" fill="#16181b">50 KG</text></g></svg><span class="kpi">1,500 MT a day</span></div></article>
+        <article class="station"><div class="hd"><span class="no">06</span><div><h3>Truck</h3><p>Our own fleet. Containers stuffed at the plant, alongside the same day.</p></div></div>
+          <div class="ill"><svg viewBox="0 0 700 300" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><rect x="0" y="250" width="700" height="50" fill="#24282d"/><g class="road" fill="#f4c20d"><rect x="0" y="272" width="24" height="4"/><rect x="40" y="272" width="24" height="4"/><rect x="80" y="272" width="24" height="4"/><rect x="120" y="272" width="24" height="4"/><rect x="160" y="272" width="24" height="4"/><rect x="200" y="272" width="24" height="4"/><rect x="240" y="272" width="24" height="4"/><rect x="280" y="272" width="24" height="4"/><rect x="320" y="272" width="24" height="4"/><rect x="360" y="272" width="24" height="4"/><rect x="400" y="272" width="24" height="4"/><rect x="440" y="272" width="24" height="4"/><rect x="480" y="272" width="24" height="4"/><rect x="520" y="272" width="24" height="4"/><rect x="560" y="272" width="24" height="4"/><rect x="600" y="272" width="24" height="4"/><rect x="640" y="272" width="24" height="4"/><rect x="680" y="272" width="24" height="4"/><rect x="720" y="272" width="24" height="4"/></g><rect x="170" y="150" width="280" height="90" fill="#c4402f"/><text x="310" y="202" text-anchor="middle" font-family="Saira Stencil One, sans-serif" font-size="22" fill="#f7f5ee">NARVANTA</text><path d="M450 180h70l30 30v30H450z" fill="#f4c20d"/><path d="M470 188h40l20 22h-60z" fill="#16181b" fill-opacity=".6"/><g><circle class="wheel" cx="220" cy="246" r="18" fill="#16181b" stroke="#a4a7ab" stroke-width="3" stroke-dasharray="6 5"/><circle class="wheel" cx="400" cy="246" r="18" fill="#16181b" stroke="#a4a7ab" stroke-width="3" stroke-dasharray="6 5"/><circle class="wheel" cx="520" cy="246" r="18" fill="#16181b" stroke="#a4a7ab" stroke-width="3" stroke-dasharray="6 5"/></g></svg><span class="kpi">62 km · 90 minutes</span></div></article>
+        <article class="station"><div class="hd"><span class="no">07</span><div><h3>Vessel</h3><p>Mundra for containers, Kandla for break-bulk. Twenty-four markets served.</p></div></div>
+          <div class="ill"><svg viewBox="0 0 700 300" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><rect x="0" y="240" width="700" height="60" fill="#1f3a4a"/><g class="road" fill="#7fa7d9" fill-opacity=".4"><rect x="0" y="252" width="30" height="2"/><rect x="60" y="262" width="30" height="2"/><rect x="120" y="252" width="30" height="2"/><rect x="180" y="262" width="30" height="2"/><rect x="240" y="252" width="30" height="2"/><rect x="300" y="262" width="30" height="2"/><rect x="360" y="252" width="30" height="2"/><rect x="420" y="262" width="30" height="2"/><rect x="480" y="252" width="30" height="2"/><rect x="540" y="262" width="30" height="2"/><rect x="600" y="252" width="30" height="2"/><rect x="660" y="262" width="30" height="2"/><rect x="720" y="252" width="30" height="2"/></g><g class="bob"><path d="M220 200h420l-40 50H260z" fill="#30353b"/><rect x="300" y="172" width="50" height="28" fill="#c4402f"/><rect x="354" y="172" width="50" height="28" fill="#f4c20d"/><rect x="408" y="172" width="50" height="28" fill="#5fb3a1"/><rect x="462" y="172" width="50" height="28" fill="#c4402f"/><rect x="354" y="144" width="50" height="28" fill="#7fa7d9"/><rect x="408" y="144" width="50" height="28" fill="#f4c20d"/><rect x="560" y="150" width="40" height="50" fill="#e6e3dc"/></g><rect x="110" y="60" width="16" height="190" fill="#f4c20d"/><g class="crane"><path d="M118 60h220v10H118z" fill="#f4c20d"/><path d="M300 70v50" stroke="#a4a7ab" stroke-width="2"/><rect x="276" y="120" width="50" height="26" fill="#c4402f"/></g></svg><span class="kpi">Mundra 62 km · Kandla 78 km</span></div></article>
+      </div>
+      <div class="wrap yardbelt"><div class="tread"></div><svg class="truckm" id="truckm" width="34" height="16" viewBox="0 0 34 16" aria-hidden="true"><rect width="22" height="12" fill="#f4c20d"/><path d="M22 4h7l5 5v3H22z" fill="#f4c20d"/><circle cx="6" cy="13" r="3" fill="#16181b"/><circle cx="27" cy="13" r="3" fill="#16181b"/></svg><div class="ticks"><span>PIT</span><span>YARD</span><span>DRYER</span><span>MILL</span><span>BAGGING</span><span>ROAD</span><span>MUNDRA · 62 KM</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="bags-sec pad" id="bags"><div class="wrap">
+  <div class="shead rv"><div><span class="m">Grades · read the bag</span><h2 style="margin-top:12px">What's printed is what's inside</h2></div><p>Every bag carries the grade, the lot number and the typical analysis. The lot number traces back to the bench it was dug from. Values indicative.</p></div>
+  <div class="bags" id="bagsgrid"></div>
+</div></section>
+
+<section class="coa-sec pad" id="coa"><div class="wrap coa-grid">
+  <div class="rv">
+    <span class="m">Quality</span>
+    <h2 style="font-size:clamp(2rem,5vw,3.6rem);margin-top:12px">Tested twice. Stamped once.</h2>
+    <p style="color:var(--dim);margin-top:16px;max-width:44ch">Every lot is tested before bagging and again before loading. The certificate travels with the shipment; the retained sample stays in our lab for twelve months.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:24px"><span class="m" style="border:1px solid var(--line);padding:8px 12px">ISO 9001:2015</span><span class="m" style="border:1px solid var(--line);padding:8px 12px">API 13A Sec. 9</span><span class="m" style="border:1px solid var(--line);padding:8px 12px">SGS on request</span></div>
+  </div>
+  <div class="coa rv" id="coadoc">
+    <h4>Certificate of analysis</h4>
+    <div class="meta"><span>Product: API drilling bentonite</span><span>Lot: NM-01 / 26-1147</span><span>Packing: 50 kg HDPE</span><span>Quantity: 26 MT</span></div>
+    <div class="tw"><table>
+      <thead><tr><th>Parameter</th><th>Method</th><th>Result</th><th>Spec</th></tr></thead>
+      <tbody>
+        <tr><td>Viscosity, 600 rpm</td><td>API 13A</td><td>32 cP</td><td>≥ 30</td></tr>
+        <tr><td>Yield point / PV</td><td>API 13A</td><td>2.4</td><td>≤ 3</td></tr>
+        <tr><td>Filtrate loss</td><td>API 13A</td><td>13.5 ml</td><td>≤ 15</td></tr>
+        <tr><td>Residue &gt; 75 µm</td><td>Wet sieve</td><td>2.0 %</td><td>≤ 4</td></tr>
+        <tr><td>Swelling index</td><td>ASTM D5890</td><td>30 ml</td><td>≥ 24</td></tr>
+        <tr><td>Moisture</td><td>105 °C</td><td>9.5 %</td><td>≤ 10</td></tr>
+      </tbody>
+    </table></div>
+    <span class="stampx" id="stamp">QC Passed</span>
+  </div>
+</div></section>
+
+<section class="pad" id="sectors"><div class="wrap">
+  <div class="shead rv"><div><span class="m">Sectors</span><h2 style="margin-top:12px">Where the line ends</h2></div></div>
+  <div class="secs rv">
+    <div class="sc"><span class="n">01</span><h4>Drilling &amp; HDD</h4><p>Water-well, piling, trenchless and oilfield mud.</p></div>
+    <div class="sc"><span class="n">02</span><h4>Foundry</h4><p>Green-sand bond for ferrous and non-ferrous casting.</p></div>
+    <div class="sc"><span class="n">03</span><h4>Steel pellets</h4><p>Binder for iron-ore and DRI pellet plants.</p></div>
+    <div class="sc"><span class="n">04</span><h4>Civil works</h4><p>Pond and landfill sealing, diaphragm walls, GCL.</p></div>
+    <div class="sc"><span class="n">05</span><h4>Oil refining</h4><p>Bleaching earth for edible and lube oils.</p></div>
+    <div class="sc"><span class="n">06</span><h4>Feed mills</h4><p>Pellet binding and toxin adsorption.</p></div>
+    <div class="sc"><span class="n">07</span><h4>Ceramics &amp; paper</h4><p>Kaolin for bodies, glazes and fillers.</p></div>
+    <div class="sc"><span class="n">08</span><h4>Glass</h4><p>Low-iron silica sand and feldspar.</p></div>
+  </div>
+</div></section>
+
+<section class="pad" id="order" style="padding-top:0"><div class="wrap">
+  <div class="order rv">
+    <div class="top"><h2>Loading order</h2><div class="m">Order no. <span id="ono">LO-2026-0000</span><br>Reply within one working day</div></div>
+    <form id="f10" novalidate>
+      <div class="fi"><label for="f10-n">Name</label><input id="f10-n" autocomplete="name"></div>
+      <div class="fi"><label for="f10-c">Company</label><input id="f10-c" autocomplete="organization"></div>
+      <div class="fi"><label for="f10-e">Work email</label><input id="f10-e" type="email" autocomplete="email"></div>
+      <div class="fi"><label for="f10-p">Destination port</label><input id="f10-p"></div>
+      <div class="fi"><label for="f10-g">Grade</label><select id="f10-g"><option>API drilling bentonite</option><option>Foundry bentonite</option><option>Pelletizing grade</option><option>Civil sealing</option><option>Bleaching earth</option><option>Feed binder</option><option>Attapulgite</option><option>Kaolin</option><option>Silica &amp; quartz</option></select></div>
+      <div class="fi"><label for="f10-q">Quantity (MT)</label><input id="f10-q" inputmode="numeric"></div>
+      <div class="fi full"><label for="f10-k">Packing</label><select id="f10-k"><option>50 kg HDPE bags</option><option>1–1.5 MT jumbo bags</option><option>Bulk in container liner</option></select></div>
+      <div class="fi full"><label for="f10-m">Target specification</label><textarea id="f10-m" rows="2"></textarea></div>
+      <div class="sub"><button class="btn" type="submit">Send loading order</button><span class="note" id="f10-out">Demo form — not connected to a mailbox in this preview.</span></div>
+    </form>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="fg">
+    <div><a class="logo" href="#top"><svg aria-hidden="true"><use href="#nm"/></svg><span><b>Narvanta Minerals</b><span>Bhuj · Kutch · Gujarat</span></span></a>
+      <p style="margin-top:14px;max-width:34ch">Mine-owning producer of bentonite, activated clay and allied industrial minerals, from pit to port.</p></div>
+    <div><h5>Line</h5><ul><li><a href="#yard">Pit &amp; yard</a></li><li><a href="#yard">Dryer &amp; mill</a></li><li><a href="#yard">Bagging</a></li><li><a href="#yard">Port</a></li></ul></div>
+    <div><h5>Company</h5><ul><li><a href="#bags">Grades</a></li><li><a href="#coa">Quality</a></li><li><a href="#sectors">Sectors</a></li><li><a href="#order">Order</a></li></ul></div>
+    <div><h5>Contact</h5><ul><li>Placeholder address</li><li>Placeholder phone</li><li>Placeholder email</li></ul></div>
+  </div>
+  <div class="fb"><span>© 2026 Narvanta Minerals — concept layout</span><span>Figures indicative · imagery placeholder</span></div>
+</div></footer>
+
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.documentElement.classList.add('js');
+
+  /* bags */
+  var B=[['NM-01','API drilling','#f4c20d',[['Viscosity','32 cP'],['Filtrate','13.5 ml'],['Swell','30 ml']],'Water-well, HDD and oilfield mud.'],
+    ['NM-02','Foundry','#e8743b',[['GCS','1.85 kg/cm²'],['MB index','34 meq'],['Mesh','200']],'Green-sand moulding binder.'],
+    ['NM-03','Pelletizing','#5fb3a1',[['Swell','30 ml'],['Grit','1.2 %'],['Mesh','325']],'Iron-ore and DRI pellet binder.'],
+    ['NM-04','Civil sealing','#7fa7d9',[['Permeability','1e-9 cm/s'],['Liquid limit','480 %'],['Mesh','200']],'Ponds, landfill liners, slurry walls.'],
+    ['NM-05','Bleaching earth','#c9a676',[['Oil retention','28 %'],['Bulk density','0.62'],['Acidity','0.15 %']],'Edible-oil and lube refining.'],
+    ['NM-06','Feed binder','#9ccc65',[['AFB1 bound','≥ 90 %'],['Moisture','≤ 10 %'],['pH','9.2']],'Compound and aqua feed.'],
+    ['NM-07','Attapulgite','#b48ad6',[['Salt','Saturated'],['Granule','0.5–2 mm'],['Absorb','120 %']],'Salt-tolerant gel, absorbents.'],
+    ['NM-08','Kaolin','#d9d4c7',[['Brightness','84 %'],['Al₂O₃','32 %'],['Residue','0.05 %']],'Ceramics, paper, rubber, paint.'],
+    ['NM-09','Silica &amp; quartz','#9fb3c8',[['SiO₂','99.2 %'],['AFS','55 GFN'],['Fe₂O₃','0.03 %']],'Glass, foundry sand, filtration.']];
+  document.getElementById('bagsgrid').innerHTML=B.map(function(b,i){return '<article class="bag rv" style="--band:'+b[2]+'"><div class="stitch"></div><div class="brand">NARVANTA</div><div class="sub">Minerals · Kutch · India</div>'
+    +'<div class="band"><b>'+b[1]+'</b><span>'+b[0]+'</span></div><ul>'+b[3].map(function(s){return '<li><span>'+s[0]+'</span><b>'+s[1]+'</b></li>'}).join('')+'</ul>'
+    +'<p class="use">'+b[4]+'</p><div class="net"><strong>NET 50 KG</strong><svg aria-hidden="true"><use href="#barcode"/></svg></div></article>'}).join('');
+
+  /* odometers */
+  function fmtIN(n){var s=String(n);if(s.length<=3)return s;var last=s.slice(-3),rest=s.slice(0,-3);return rest.replace(/\B(?=(\d{2})+(?!\d))/g,',')+','+last}
+  document.querySelectorAll('.odo').forEach(function(o){var txt=o.dataset.fmt==='in'?fmtIN(+o.dataset.v):String(o.dataset.v);
+    o.innerHTML=txt.split('').map(function(ch){if(ch===',')return '<span>,</span>';var col='';for(var d=0;d<10;d++)col+='<span>'+d+'</span>';return '<span class="dg" data-d="'+ch+'"><span class="col">'+col+'</span></span>'}).join('');
+    o.setAttribute('aria-label',txt)});
+  function roll(o){o.querySelectorAll('.dg').forEach(function(dg,i){var c=dg.firstChild;c.style.transitionDelay=(i*0.08)+'s';c.style.transform='translateY(-'+(+dg.dataset.d)+'em)'})}
+
+  /* reveal */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var t=e.target;t.classList.add('in');
+    if(t.id==='coadoc')setTimeout(function(){document.getElementById('stamp').classList.add('in')},500);
+    if(t.classList.contains('odos'))t.querySelectorAll('.odo').forEach(roll);
+    io.unobserve(t)})},{threshold:.2});
+  document.querySelectorAll('.rv,.odos').forEach(function(el){io.observe(el)});
+
+  /* pinned horizontal yard */
+  var track=document.getElementById('ytrack'), stick=document.getElementById('ystick'), row=document.getElementById('row'), hud=document.getElementById('hud'), tm=document.getElementById('truckm');
+  var names=['Pit','Stockyard','Dryer','Mill','Bagging','Truck','Vessel'], dist=0, lastI=-1;
+  function measure(){dist=Math.max(0,row.scrollWidth-stick.clientWidth);track.style.height=(dist+stick.clientHeight)+'px'}
+  function yard(){
+    var r=track.getBoundingClientRect(), span=track.offsetHeight-stick.clientHeight, p=span>0?Math.min(1,Math.max(0,-r.top/span)):0;
+    row.style.transform='translate3d('+(-p*dist).toFixed(1)+'px,0,0)';
+    var i=Math.min(names.length-1,Math.round(p*(names.length-1)));
+    if(i!==lastI){hud.textContent='Station 0'+(i+1)+' / 07 · '+names[i];lastI=i}
+    tm.style.left=(p*100)+'%';
+  }
+  measure();yard();
+  addEventListener('resize',function(){measure();yard()});
+  addEventListener('scroll',yard,{passive:true});
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){measure();yard()});
+
+  var n=new Date(), ono=document.getElementById('ono'); ono.textContent='LO-'+n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0')+String(n.getDate()).padStart(2,'0');
+  document.getElementById('f10').addEventListener('submit',function(e){e.preventDefault();document.getElementById('f10-out').textContent='Thanks — in the live site this loading order would reach the dispatch desk.'});
+})();
+</script>
+</body>
+</html>

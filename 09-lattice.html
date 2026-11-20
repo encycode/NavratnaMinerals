@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%2305070d'/><path d='M9 24V8h3l8 10.4V8h3v16h-3l-8-10.4V24z' fill='%235eead4'/></svg>">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Narvanta Minerals — bentonite engineered from the montmorillonite layer up.">
+<title>Narvanta Minerals Lattice</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: the crystal is the hero — an interactive montmorillonite lattice, periodic-table grade tiles, radial lab gauges */
+:root{
+  --bg:#05070d; --bg2:#0a0f1d; --panel:#0e1426; --fg:#e8ecf5; --dim:#8b93a8; --line:#1c2440;
+  --teal:#5eead4; --violet:#a78bfa; --amber:#fbbf77; --blue:#60a5fa;
+  --iri:linear-gradient(110deg,var(--teal),var(--blue) 40%,var(--violet) 70%,var(--amber));
+  --f-d:'Instrument Serif',Georgia,serif; --f-b:'Geist',system-ui,sans-serif; --f-m:'Geist Mono',ui-monospace,monospace;
+  --hh:64px; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-b);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+[hidden]{display:none!important}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-d);font-weight:400;margin:0;line-height:.98;letter-spacing:-.015em;text-wrap:balance}
+h1 em,h2 em{font-style:italic;background:var(--iri);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.06em}
+p{margin:0}a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.m{font-family:var(--f-m);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.demo{background:var(--bg2);color:var(--dim);font-family:var(--f-m);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:7px 12px;border-bottom:1px solid var(--line)}
+
+header{position:sticky;top:0;z-index:40;background:rgba(5,7,13,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;height:var(--hh)}
+.logo{display:flex;align-items:center;gap:12px}
+.logo svg{width:32px;height:32px;flex:none}
+.logo b{font-family:var(--f-d);font-size:1.4rem;display:block;line-height:1;letter-spacing:0}
+.logo span{font-family:var(--f-m);font-size:.56rem;letter-spacing:.16em;color:var(--dim);text-transform:uppercase}
+nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:.88rem;color:var(--dim)}
+nav a:hover{color:var(--fg)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:.88rem;font-weight:500;padding:11px 20px;border-radius:999px;color:var(--bg);background:var(--fg);transition:.25s;position:relative}
+.btn:hover{background:var(--teal)}
+.btn-o{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 1px var(--line)}
+.btn-o:hover{background:rgba(255,255,255,.05);box-shadow:inset 0 0 0 1px #3a456e;color:var(--fg)}
+@media(max-width:940px){nav ul{display:none}}
+
+/* ---------- hero lattice ---------- */
+.hero{position:relative;overflow:hidden;min-height:min(820px,calc(100svh - var(--hh) - 30px));display:flex;align-items:center;background:radial-gradient(60% 70% at 70% 45%,rgba(94,234,212,.08),transparent 70%),radial-gradient(40% 50% at 85% 80%,rgba(167,139,250,.1),transparent 70%)}
+#lat{position:absolute;top:0;right:0;width:62%;height:100%;cursor:grab;touch-action:pan-y}
+#lat:active{cursor:grabbing}
+.hero-in{position:relative;z-index:2;max-width:560px;padding-block:60px}
+.hero h1{font-size:clamp(3rem,7.4vw,6.2rem)}
+.hero .lede{color:var(--dim);font-size:1.08rem;max-width:44ch;margin-top:24px}
+.cta{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.panel{position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:24px;z-index:3;width:min(340px,calc(100% - 32px));background:rgba(14,20,38,.72);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:18px;padding:16px 18px}
+.panel .row{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.panel .d{font-family:var(--f-m);font-size:1.5rem;font-variant-numeric:tabular-nums;color:var(--fg)}
+.panel .d small{font-size:.7rem;color:var(--dim);margin-left:4px}
+.panel .st{font-size:.84rem;color:var(--teal);text-align:right}
+.panel input[type=range]{width:100%;margin:14px 0 6px;accent-color:var(--teal)}
+.panel .ends{display:flex;justify-content:space-between;font-family:var(--f-m);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-size:.74rem;color:var(--dim)}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:0}
+.panel button{all:unset;cursor:pointer;font-family:var(--f-m);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);border:1px solid var(--line);border-radius:999px;padding:4px 10px}
+.panel button:hover{color:var(--fg)}
+.panel button:focus-visible{outline:2px solid var(--teal)}
+.drag{position:absolute;right:max(16px,env(safe-area-inset-right,0px));top:24px;z-index:3;font-family:var(--f-m);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);display:flex;align-items:center;gap:8px}
+.drag::before{content:"";width:24px;height:1px;background:var(--dim)}
+@media(max-width:900px){
+  .hero{flex-direction:column;align-items:stretch;min-height:0}
+  .hero>.wrap{order:1}
+  #lat{order:2;position:relative;width:100%;height:440px;top:auto;right:auto}
+  .drag{order:3;position:relative;top:auto;right:auto;justify-content:center;margin:-6px 0 12px}
+  .panel{order:4;position:relative;right:auto;bottom:auto;width:auto;margin:0 max(16px,env(safe-area-inset-left,0px)) 32px}
+  .hero-in{padding-block:40px 10px}
+}
+
+.pad{padding-block:100px}
+@media(max-width:700px){.pad{padding-block:64px}}
+.shead{max-width:64ch;margin-bottom:50px}
+.shead h2{font-size:clamp(2.4rem,5.6vw,4.4rem);margin-top:14px}
+.shead p{color:var(--dim);margin-top:16px;font-size:1.04rem}
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .9s,transform .9s cubic-bezier(.2,.7,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+
+/* ---------- anatomy ---------- */
+.anat{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.sheet svg{width:100%;height:auto;display:block}
+.props{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.props div{background:var(--panel);padding:24px 22px}
+.props b{font-family:var(--f-d);font-size:2.8rem;line-height:1;display:block;font-variant-numeric:tabular-nums}
+.props b small{font-family:var(--f-m);font-size:.8rem;color:var(--dim);margin-left:4px}
+.props div>span{font-size:.86rem;color:var(--dim);display:block;margin-top:8px}
+@media(max-width:900px){.anat{grid-template-columns:1fr;gap:36px}}
+
+/* ---------- periodic tiles ---------- */
+.ptable{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;perspective:1000px}
+.el{position:relative;border-radius:18px;padding:22px 22px 20px;background:var(--panel);border:1px solid var(--line);min-height:210px;display:flex;flex-direction:column;transform-style:preserve-3d;transition:transform .25s ease-out,border-color .3s;overflow:hidden;--mx:50%;--my:50%}
+.el::before{content:"";position:absolute;inset:-1px;border-radius:18px;padding:1px;background:radial-gradient(240px circle at var(--mx) var(--my),rgba(94,234,212,.75),rgba(167,139,250,.5) 40%,transparent 70%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s}
+.el::after{content:"";position:absolute;inset:0;background:radial-gradient(300px circle at var(--mx) var(--my),rgba(94,234,212,.08),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.el:hover::before,.el:hover::after{opacity:1}
+.el .top{display:flex;justify-content:space-between;font-family:var(--f-m);font-size:.66rem;color:var(--dim);letter-spacing:.06em}
+.el .sym{font-family:var(--f-d);font-size:4.4rem;line-height:.9;margin:14px 0 4px;background:var(--iri);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% 100%;transition:background-position .6s}
+.el:hover .sym{background-position:100% 0}
+.el h3{font-family:var(--f-b);font-size:1.02rem;font-weight:600;letter-spacing:0}
+.el p{font-size:.86rem;color:var(--dim);margin-top:6px}
+.el .val{margin-top:auto;padding-top:14px;font-family:var(--f-m);font-size:.72rem;color:var(--teal)}
+@media(max-width:920px){.ptable{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.ptable{grid-template-columns:1fr}}
+
+/* ---------- gauges ---------- */
+.gauges{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.gg{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px 18px;text-align:center}
+.gg svg{width:100%;max-width:150px;height:auto;display:block;margin:0 auto}
+.gg .arc{transition:stroke-dashoffset 1.8s cubic-bezier(.2,.8,.2,1)}
+.gg b{font-family:var(--f-d);font-size:2.2rem;display:block;line-height:1;margin-top:-62px;margin-bottom:34px;font-variant-numeric:tabular-nums}
+.gg h4{font-family:var(--f-b);font-size:.96rem;font-weight:600;margin:0}
+.gg span{font-size:.8rem;color:var(--dim)}
+@media(max-width:900px){.gauges{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ---------- timeline ---------- */
+.tl{position:relative;display:grid;grid-template-columns:1fr;gap:0;max-width:820px}
+.tl svg.rail{position:absolute;left:19px;top:10px;width:4px;height:calc(100% - 20px);overflow:visible}
+.tli{position:relative;display:grid;grid-template-columns:44px 1fr;gap:22px;padding-bottom:40px}
+.tli .node{width:40px;height:40px;border-radius:50%;background:var(--bg);border:1px solid var(--line);display:grid;place-items:center;font-family:var(--f-m);font-size:.7rem;color:var(--dim);position:relative;z-index:1;transition:.4s}
+.tli.lit .node{border-color:var(--teal);color:var(--teal);box-shadow:0 0 0 6px rgba(94,234,212,.08),0 0 22px rgba(94,234,212,.35)}
+.tli h4{font-family:var(--f-d);font-size:1.9rem;font-weight:400;margin:4px 0 6px}
+.tli p{color:var(--dim);max-width:56ch}
+
+/* ---------- map + form ---------- */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+@media(max-width:900px){.split{grid-template-columns:1fr;gap:36px}}
+.routes path.r{stroke-dasharray:4 6;animation:flow 1.6s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-20}}
+.routes .pn{animation:pn 2.4s ease-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pn{0%{transform:scale(.6);opacity:.9}100%{transform:scale(2.6);opacity:0}}
+.ports{list-style:none;padding:0;margin:22px 0 0}
+.ports li{display:flex;justify-content:space-between;gap:14px;padding:13px 0;border-bottom:1px solid var(--line);font-size:.95rem}
+.ports b{font-family:var(--f-m);font-weight:400;font-size:.82rem;color:var(--teal)}
+.fcard{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:34px 30px;position:relative;overflow:hidden}
+.fcard::before{content:"";position:absolute;inset:0 0 auto;height:2px;background:var(--iri)}
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.full{grid-column:1/-1}
+label{display:block;font-family:var(--f-m);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
+input,select,textarea{width:100%;border:1px solid var(--line);background:var(--bg);color:var(--fg);padding:12px 14px;border-radius:12px;font-family:var(--f-b);font-size:.94rem}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 4px rgba(94,234,212,.1)}
+.note{font-size:.8rem;color:var(--dim);margin-top:10px}
+@media(max-width:560px){form{grid-template-columns:1fr}.fcard{padding:26px 18px}}
+
+footer{border-top:1px solid var(--line);padding-block:56px 34px;color:var(--dim);font-size:.9rem}
+.fg{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px}
+footer h5{font-family:var(--f-m);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fg);margin:0 0 13px}
+footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px}
+footer a:hover{color:var(--teal)}
+.fb{margin-top:42px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:var(--f-m);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase}
+@media(max-width:760px){.fg{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.logo>span>span{display:none}.logo b{font-size:1rem}.nav>.btn{padding:9px 14px;font-size:.74rem;white-space:nowrap}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="demo">Design concept 09 · “Lattice” — placeholder imagery &amp; indicative figures</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="ig" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5eead4"/><stop offset=".5" stop-color="#60a5fa"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
+  <symbol id="nm" viewBox="0 0 32 32"><path d="M16 1.5 29 9v14L16 30.5 3 23V9z" fill="none" stroke="url(#ig)" stroke-width="1.5"/><circle cx="16" cy="1.5" r="1.6" fill="#5eead4"/><circle cx="29" cy="23" r="1.6" fill="#a78bfa"/><circle cx="3" cy="23" r="1.6" fill="#60a5fa"/><path d="M10.6 21.5v-11h2.5l6.3 7.6v-7.6h2.5v11h-2.5l-6.3-7.6v7.6z" fill="#e8ecf5"/></symbol>
+</defs></svg>
+
+<header><div class="wrap nav">
+  <a class="logo" href="#top"><svg aria-hidden="true"><use href="#nm"/></svg><span><b>Narvanta Minerals</b><span>Bentonite · from the layer up</span></span></a>
+  <nav><ul><li><a href="#anatomy">Anatomy</a></li><li><a href="#grades">Grades</a></li><li><a href="#lab">Lab</a></li><li><a href="#process">Process</a></li><li><a href="#enquiry">Enquiry</a></li></ul></nav>
+  <a class="btn" href="#enquiry">Request a sample</a>
+</div></header>
+
+<section class="hero" id="top">
+  <canvas id="lat" aria-label="Interactive 3D model of montmorillonite clay layers. Drag to rotate; use the hydration slider to swell the layers."></canvas>
+  <div class="drag">Drag to rotate</div>
+  <div class="wrap" style="width:100%">
+    <div class="hero-in">
+      <span class="m">Sodium montmorillonite · Kutch, India</span>
+      <h1 style="margin-top:18px">It starts with a layer <em>one nanometre</em> thick.</h1>
+      <p class="lede">Bentonite works because of montmorillonite: aluminosilicate sheets one nanometre thick, stacked like pages. Water slips between them and the clay swells. Every grade we sell is controlled from that layer up.</p>
+      <div class="cta"><a class="btn" href="#grades">Explore the grades</a><a class="btn btn-o" href="#anatomy">How it works</a></div>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="row"><span class="m">Layer spacing d₀₀₁</span><button type="button" id="auto" aria-pressed="true">Auto</button></div>
+    <div class="row" style="margin-top:6px"><span class="d" id="dval">12.4<small>Å</small></span><span class="st" id="dstate">One water layer</span></div>
+    <label for="hyd" class="m" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Hydration</label>
+    <input type="range" id="hyd" min="0" max="100" value="30">
+    <div class="ends"><span>Dry</span><span>Hydration</span><span>Swollen</span></div>
+    <div class="legend"><span><i style="background:#5eead4"></i>Si (tetrahedral)</span><span><i style="background:#fbbf77"></i>Al (octahedral)</span><span><i style="background:#e8ecf5"></i>O</span><span><i style="background:#a78bfa"></i>Na⁺</span><span><i style="background:#60a5fa"></i>H₂O</span></div>
+  </div>
+</section>
+
+<section class="pad" id="anatomy" style="border-top:1px solid var(--line)"><div class="wrap">
+  <div class="shead rv"><span class="m">Anatomy of a grain</span><h2>Three sheets, then water. <em>Repeat.</em></h2><p>Each montmorillonite layer is a sandwich: two silica sheets around one alumina sheet. Sodium ions sit between the layers and pull water in. That is the swelling buyers pay for, and it is why we keep sodium and calcium clay apart from the face onwards.</p></div>
+  <div class="anat">
+    <div class="sheet rv">
+      <svg viewBox="0 0 560 330" role="img" aria-label="Schematic of two montmorillonite layers, each a tetrahedral-octahedral-tetrahedral sandwich, with sodium ions and water molecules in the interlayer">
+        <defs><pattern id="hexp" width="24" height="14" patternUnits="userSpaceOnUse"><path d="M0 7 6 0h12l6 7-6 7H6z" fill="none" stroke="#5eead4" stroke-opacity=".5"/></pattern></defs>
+        <g font-family="Geist Mono, monospace" font-size="10" fill="#8b93a8">
+          <rect x="40" y="20" width="360" height="30" rx="4" fill="url(#hexp)" stroke="#5eead4" stroke-opacity=".6"/>
+          <rect x="40" y="52" width="360" height="30" rx="4" fill="#fbbf77" fill-opacity=".14" stroke="#fbbf77" stroke-opacity=".6"/>
+          <rect x="40" y="84" width="360" height="30" rx="4" fill="url(#hexp)" stroke="#5eead4" stroke-opacity=".6"/>
+          <g fill="#a78bfa"><circle cx="80" cy="150" r="6"/><circle cx="190" cy="146" r="6"/><circle cx="300" cy="152" r="6"/><circle cx="370" cy="148" r="6"/></g>
+          <g fill="#60a5fa" fill-opacity=".8"><circle cx="110" cy="136" r="4"/><circle cx="140" cy="160" r="4"/><circle cx="230" cy="134" r="4"/><circle cx="260" cy="162" r="4"/><circle cx="340" cy="138" r="4"/><circle cx="60" cy="166" r="4"/><circle cx="160" cy="132" r="4"/><circle cx="390" cy="164" r="4"/></g>
+          <rect x="40" y="186" width="360" height="30" rx="4" fill="url(#hexp)" stroke="#5eead4" stroke-opacity=".6"/>
+          <rect x="40" y="218" width="360" height="30" rx="4" fill="#fbbf77" fill-opacity=".14" stroke="#fbbf77" stroke-opacity=".6"/>
+          <rect x="40" y="250" width="360" height="30" rx="4" fill="url(#hexp)" stroke="#5eead4" stroke-opacity=".6"/>
+          <path d="M416 20v94" stroke="#e8ecf5" stroke-opacity=".5"/><path d="M412 20h8M412 114h8" stroke="#e8ecf5" stroke-opacity=".5"/>
+          <text x="428" y="40">T · silica sheet</text><text x="428" y="72">O · alumina sheet</text><text x="428" y="104">T · silica sheet</text>
+          <text x="428" y="152" fill="#a78bfa">Na⁺ + H₂O</text><text x="428" y="166">interlayer</text>
+          <path d="M20 20v166" stroke="#5eead4"/><path d="M16 20h8M16 186h8" stroke="#5eead4"/>
+          <text x="14" y="310" fill="#5eead4">d₀₀₁ = 12.4 Å (one water layer) → 19 Å (three layers)</text>
+        </g>
+      </svg>
+    </div>
+    <div class="props rv">
+      <div><b><span data-count="1">0</span><small>nm</small></b><span>Thickness of one clay layer</span></div>
+      <div><b><span data-count="750">0</span><small>m²/g</small></b><span>Specific surface, fully dispersed</span></div>
+      <div><b><span data-count="85">0</span><small>meq</small></b><span>Cation exchange capacity per 100 g</span></div>
+      <div><b><span data-count="15">0</span><small>×</small></b><span>Dry volume when fully hydrated</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="pad" id="grades" style="background:var(--bg2);border-block:1px solid var(--line)"><div class="wrap">
+  <div class="shead rv"><span class="m">The grades</span><h2>A table of <em>our elements</em></h2><p>Each grade has its own symbol, its own job and one number that matters most to the buyer. Typical values; tolerances confirmed per order.</p></div>
+  <div class="ptable" id="ptable"></div>
+</div></section>
+
+<section class="pad" id="lab"><div class="wrap">
+  <div class="shead rv"><span class="m">Laboratory · drilling grade NM-01</span><h2>Measured, <em>not promised</em></h2><p>Typical results against specification, filled to scale. Every lot is tested before bagging and again before loading.</p></div>
+  <div class="gauges">
+    <div class="gg rv" data-v="0.9"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="#1c2440" stroke-width="8"/><circle class="arc" cx="60" cy="60" r="50" fill="none" stroke="url(#ig)" stroke-width="8" stroke-linecap="round" stroke-dasharray="314.16" stroke-dashoffset="314.16" transform="rotate(-90 60 60)"/></svg><b>90%</b><h4>Montmorillonite</h4><span>XRD · min 85%</span></div>
+    <div class="gg rv" data-v="0.94"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="#1c2440" stroke-width="8"/><circle class="arc" cx="60" cy="60" r="50" fill="none" stroke="url(#ig)" stroke-width="8" stroke-linecap="round" stroke-dasharray="314.16" stroke-dashoffset="314.16" transform="rotate(-90 60 60)"/></svg><b>30</b><h4>Swelling index</h4><span>ml / 2 g · min 24</span></div>
+    <div class="gg rv" data-v="0.8"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="#1c2440" stroke-width="8"/><circle class="arc" cx="60" cy="60" r="50" fill="none" stroke="url(#ig)" stroke-width="8" stroke-linecap="round" stroke-dasharray="314.16" stroke-dashoffset="314.16" transform="rotate(-90 60 60)"/></svg><b>32</b><h4>Viscosity</h4><span>cP · API 13A · min 30</span></div>
+    <div class="gg rv" data-v="0.55"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="#1c2440" stroke-width="8"/><circle class="arc" cx="60" cy="60" r="50" fill="none" stroke="url(#ig)" stroke-width="8" stroke-linecap="round" stroke-dasharray="314.16" stroke-dashoffset="314.16" transform="rotate(-90 60 60)"/></svg><b>13.5</b><h4>Filtrate loss</h4><span>ml · API 13A · max 15</span></div>
+  </div>
+</div></section>
+
+<section class="pad" id="process" style="padding-top:0"><div class="wrap">
+  <div class="shead rv"><span class="m">Mine to vessel</span><h2>Five controlled <em>transitions</em></h2></div>
+  <div class="tl" id="tl">
+    <svg class="rail" preserveAspectRatio="none" viewBox="0 0 4 100" aria-hidden="true"><path d="M2 0V100" stroke="#1c2440" stroke-width="2" vector-effect="non-scaling-stroke"/><path id="railfill" d="M2 0V100" stroke="url(#ig)" stroke-width="2" vector-effect="non-scaling-stroke" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg>
+    <div class="tli"><span class="node">01</span><div><h4>Selective mining</h4><p>Sodium and calcium horizons worked separately, sampled at the face before a truck is loaded.</p></div></div>
+    <div class="tli"><span class="node">02</span><div><h4>Yard blending</h4><p>Lots combined to the order's swelling index and methylene-blue value.</p></div></div>
+    <div class="tli"><span class="node">03</span><div><h4>Drying &amp; activation</h4><p>Rotary drying to 10–12% moisture; soda-ash exchange turns calcium sites into sodium sites where a grade needs it.</p></div></div>
+    <div class="tli"><span class="node">04</span><div><h4>Milling</h4><p>Raymond and micronising mills to 200, 325 or 400 mesh, with on-line sieve checks.</p></div></div>
+    <div class="tli" style="padding-bottom:0"><span class="node">05</span><div><h4>Packing &amp; shipment</h4><p>Bags, jumbo bags or bulk liners, each lot with a certificate of analysis and a retained sample.</p></div></div>
+  </div>
+</div></section>
+
+<section class="pad" id="enquiry" style="background:var(--bg2);border-top:1px solid var(--line)"><div class="wrap split">
+  <div class="rv">
+    <span class="m">Logistics</span>
+    <h2 style="font-size:clamp(2.2rem,5vw,3.6rem);margin-top:14px">From Kutch to <em>24 markets</em></h2>
+    <svg class="routes" viewBox="0 0 520 250" width="100%" style="margin-top:22px" role="img" aria-label="Schematic of shipping routes from Kutch to the Gulf, Europe, Africa, South-East Asia and East Asia">
+      <g fill="#1c2440"><circle cx="40" cy="40" r="1.4"/></g>
+      <g id="dots"></g>
+      <g fill="none" stroke="url(#ig)" stroke-width="1.4">
+        <path class="r" d="M250 140C200 80 140 70 90 74"/><path class="r" d="M250 140C244 110 248 86 262 62"/><path class="r" d="M250 140C220 180 190 200 150 206"/><path class="r" d="M250 140C310 150 350 176 400 190"/><path class="r" d="M250 140C320 104 380 92 440 90"/>
+      </g>
+      <g fill="#5eead4"><circle class="pn" cx="90" cy="74" r="4"/><circle class="pn" cx="262" cy="62" r="4" style="animation-delay:.4s"/><circle class="pn" cx="150" cy="206" r="4" style="animation-delay:.8s"/><circle class="pn" cx="400" cy="190" r="4" style="animation-delay:1.2s"/><circle class="pn" cx="440" cy="90" r="4" style="animation-delay:1.6s"/></g>
+      <g fill="#e8ecf5"><circle cx="90" cy="74" r="3"/><circle cx="262" cy="62" r="3"/><circle cx="150" cy="206" r="3"/><circle cx="400" cy="190" r="3"/><circle cx="440" cy="90" r="3"/></g>
+      <circle cx="250" cy="140" r="6" fill="#fbbf77"/>
+      <g font-family="Geist Mono, monospace" font-size="9" fill="#8b93a8"><text x="250" y="160" text-anchor="middle" fill="#fbbf77">KUTCH</text><text x="90" y="64" text-anchor="middle">EUROPE</text><text x="262" y="52" text-anchor="middle">GULF</text><text x="150" y="224" text-anchor="middle">AFRICA</text><text x="400" y="208" text-anchor="middle">SE ASIA</text><text x="440" y="80" text-anchor="middle">E ASIA</text></g>
+    </svg>
+    <ul class="ports"><li><span>Mundra Port</span><b>62 km</b></li><li><span>Kandla / Deendayal Port</span><b>78 km</b></li><li><span>Daily loading capacity</span><b>1,500 MT</b></li></ul>
+  </div>
+  <div class="fcard rv">
+    <h3 style="font-size:2.2rem">Request a <em style="font-style:italic">sample</em></h3>
+    <p style="color:var(--dim);margin-top:8px">Grade, tonnage and port. You get a data sheet, a sample date and a price within one working day.</p>
+    <form id="f9" novalidate>
+      <div><label for="f9-n">Name</label><input id="f9-n" autocomplete="name"></div>
+      <div><label for="f9-c">Company</label><input id="f9-c" autocomplete="organization"></div>
+      <div><label for="f9-e">Work email</label><input id="f9-e" type="email" autocomplete="email"></div>
+      <div><label for="f9-q">Quantity (MT)</label><input id="f9-q" inputmode="numeric"></div>
+      <div class="full"><label for="f9-g">Grade</label><select id="f9-g"><option>Dr · API drilling</option><option>Fo · Foundry bond</option><option>Pe · Pelletizing</option><option>Cv · Civil sealing</option><option>Be · Bleaching earth</option><option>Fd · Feed binder</option><option>At · Attapulgite</option><option>Ka · Kaolin</option><option>Sq · Silica &amp; quartz</option></select></div>
+      <div class="full"><label for="f9-m">Target specification</label><textarea id="f9-m" rows="3"></textarea></div>
+      <div class="full"><button class="btn" type="submit">Send enquiry</button><p class="note" id="f9-out">Demo form — not connected to a mailbox in this preview.</p></div>
+    </form>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="fg">
+    <div><a class="logo" href="#top"><svg aria-hidden="true"><use href="#nm"/></svg><span><b>Narvanta Minerals</b><span>Bhuj · Kutch · Gujarat</span></span></a>
+      <p style="margin-top:14px;max-width:34ch">Mine-owning producer of bentonite, activated clay and allied industrial minerals.</p></div>
+    <div><h5>Grades</h5><ul><li><a href="#grades">Drilling</a></li><li><a href="#grades">Foundry</a></li><li><a href="#grades">Pelletizing</a></li><li><a href="#grades">Bleaching earth</a></li></ul></div>
+    <div><h5>Company</h5><ul><li><a href="#anatomy">Anatomy</a></li><li><a href="#lab">Lab</a></li><li><a href="#process">Process</a></li><li><a href="#enquiry">Enquiry</a></li></ul></div>
+    <div><h5>Contact</h5><ul><li>Placeholder address</li><li>Placeholder phone</li><li>Placeholder email</li></ul></div>
+  </div>
+  <div class="fb"><span>© 2026 Narvanta Minerals — concept layout</span><span>Figures indicative · imagery placeholder</span></div>
+</div></footer>
+
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.documentElement.classList.add('js');
+
+  /* ---------- periodic tiles ---------- */
+  var E=[['01','Dr','API drilling','Sodium bentonite for water-well, HDD and oilfield mud.','32 cP · 13.5 ml filtrate'],
+    ['02','Fo','Foundry bond','Natural and soda-activated green-sand binder.','GCS 1.85 kg/cm²'],
+    ['03','Pe','Pelletizing','Binder for iron-ore and DRI pellet plants.','Swell 30 ml · grit 1.2%'],
+    ['04','Cv','Civil sealing','Ponds, landfill liners, diaphragm walls, GCL.','k = 1×10⁻⁹ cm/s'],
+    ['05','Be','Bleaching earth','Acid-activated clay for oil refining.','Oil retention 28%'],
+    ['06','Fd','Feed binder','Aflatoxin-binding clay for compound and aqua feed.','AFB1 bound ≥ 90%'],
+    ['07','At','Attapulgite','Salt-tolerant gelling clay and absorbents.','Salt saturated'],
+    ['08','Ka','Kaolin','Washed and air-floated china clay.','Brightness 84%'],
+    ['09','Sq','Silica &amp; quartz','Graded sand, quartz powder, feldspar.','SiO₂ 99.2%']];
+  var pt=document.getElementById('ptable');
+  pt.innerHTML=E.map(function(e){return '<article class="el rv"><div class="top"><span>NM-'+e[0]+'</span><span>'+e[0]+'</span></div><div class="sym">'+e[1]+'</div><h3>'+e[2]+'</h3><p>'+e[3]+'</p><div class="val">'+e[4]+'</div></article>'}).join('');
+  if(!reduce&&matchMedia('(hover:hover)').matches){
+    pt.querySelectorAll('.el').forEach(function(el){
+      el.addEventListener('pointermove',function(ev){var r=el.getBoundingClientRect(),x=(ev.clientX-r.left)/r.width,y=(ev.clientY-r.top)/r.height;
+        el.style.setProperty('--mx',(x*100)+'%');el.style.setProperty('--my',(y*100)+'%');
+        el.style.transform='rotateX('+((.5-y)*10).toFixed(2)+'deg) rotateY('+((x-.5)*12).toFixed(2)+'deg) translateZ(0)'});
+      el.addEventListener('pointerleave',function(){el.style.transform=''});
+    });
+  }
+
+  /* ---------- reveal, counters, gauges ---------- */
+  function count(el){var to=+el.dataset.count,t0=null;function f(t){if(!t0)t0=t;var k=Math.min(1,(t-t0)/1500);el.textContent=Math.round(to*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)}if(reduce)el.textContent=to;else requestAnimationFrame(f)}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var t=e.target;t.classList.add('in');
+    t.querySelectorAll('[data-count]').forEach(count);
+    if(t.dataset.v){var a=t.querySelector('.arc');a.style.strokeDashoffset=(314.16*(1-(+t.dataset.v))).toFixed(1)}
+    io.unobserve(t)})},{threshold:.2});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+  /* ---------- timeline rail ---------- */
+  var tl=document.getElementById('tl'), rail=document.getElementById('railfill'), items=tl.querySelectorAll('.tli');
+  function railUpd(){var r=tl.getBoundingClientRect(),p=Math.min(1,Math.max(0,(innerHeight*.6-r.top)/r.height));rail.style.strokeDashoffset=(1-p).toFixed(3);
+    items.forEach(function(it){var ir=it.getBoundingClientRect();it.classList.toggle('lit',ir.top<innerHeight*.6)})}
+  addEventListener('scroll',railUpd,{passive:true});railUpd();
+
+  /* ---------- map dot field ---------- */
+  var dots='';for(var y=16;y<250;y+=14)for(var x=12;x<520;x+=14){var n=Math.sin(x*.021)*Math.cos(y*.034)+Math.sin((x+y)*.011);if(n>.35)dots+='<circle cx="'+x+'" cy="'+y+'" r="1.3"/>'}
+  document.getElementById('dots').innerHTML='<g fill="#1f2a4a">'+dots+'</g>';
+
+  /* ---------- montmorillonite lattice ---------- */
+  var cv=document.getElementById('lat'), cx=cv.getContext('2d'), hero=document.querySelector('.hero');
+  var A=[], BD=[], W=0, H=0, dpr=1, ry=0.5, rx=-0.24, drag=null, auto=true, h=0.3, hT=0.3;
+  var COL={si:'#5eead4',o:'#e8ecf5',al:'#fbbf77',na:'#a78bfa',w:'#60a5fa'}, RAD={si:.95,o:.55,al:1.05,na:1.15,w:.75}, SPR={};
+  function sprite(c){var s=document.createElement('canvas');s.width=s.height=64;var g=s.getContext('2d'),gr=g.createRadialGradient(24,22,2,32,32,32);
+    gr.addColorStop(0,'#ffffff');gr.addColorStop(.25,c);gr.addColorStop(.85,shade(c,-.55));gr.addColorStop(1,'rgba(0,0,0,0)');g.fillStyle=gr;g.beginPath();g.arc(32,32,31,0,6.2832);g.fill();return s}
+  function shade(hex,k){var n=parseInt(hex.slice(1),16),r=n>>16,g=n>>8&255,b=n&255;r=Math.round(r*(1+k));g=Math.round(g*(1+k));b=Math.round(b*(1+k));return 'rgb('+r+','+g+','+b+')'}
+  for(var t in COL)SPR[t]=sprite(COL[t]);
+  var L=3, NX=11, NZ=6, AA=3.1, rnd=(function(){var s=7;return function(){s=(s*9301+49297)%233280;return s/233280}})();
+  function build(){
+    A=[];BD=[];NX=innerWidth<700?7:11;NZ=innerWidth<700?4:6;var spanX=(NX-1)*AA, spanZ=(NZ-1)*AA*.866, idx={};
+    for(var l=0;l<L;l++)for(var j=0;j<NZ;j++)for(var i=0;i<NX;i++){
+      var x=(i-(NX-1)/2+((j%2)?.5:0))*AA, z=(j-(NZ-1)/2)*AA*.866;
+      idx[l+'t'+i+'_'+j]=A.length;A.push({x:x,z:z,dy:2.2,t:'si',l:l});
+      idx[l+'b'+i+'_'+j]=A.length;A.push({x:x,z:z,dy:-2.2,t:'si',l:l});
+      var ot=A.length;A.push({x:x+AA*.5,z:z+AA*.29,dy:3.2,t:'o',l:l});
+      var ob=A.length;A.push({x:x+AA*.5,z:z+AA*.29,dy:-3.2,t:'o',l:l});
+      BD.push([idx[l+'t'+i+'_'+j],ot]);BD.push([idx[l+'b'+i+'_'+j],ob]);
+      if((i+j)%2===0){var al=A.length;A.push({x:x+AA*.25,z:z+AA*.15,dy:0,t:'al',l:l});BD.push([al,idx[l+'t'+i+'_'+j]]);BD.push([al,idx[l+'b'+i+'_'+j]])}
+    }
+    for(var l2=0;l2<L;l2++)for(var j2=0;j2<NZ;j2++)for(var i2=0;i2<NX;i2++){
+      ['t','b'].forEach(function(s){var a=idx[l2+s+i2+'_'+j2],b=idx[l2+s+(i2+1)+'_'+j2],c=idx[l2+s+i2+'_'+(j2+1)];if(b!==undefined)BD.push([a,b]);if(c!==undefined)BD.push([a,c])})}
+    for(var g=0;g<L-1;g++){
+      for(var k=0;k<Math.round(NX*NZ/7);k++)A.push({x:(rnd()-.5)*spanX,z:(rnd()-.5)*spanZ,t:'na',g:g});
+      for(var wl=0;wl<3;wl++)for(var k2=0;k2<(NX+NZ+6);k2++)A.push({x:(rnd()-.5)*spanX*1.02,z:(rnd()-.5)*spanZ*1.02,t:'w',g:g,w:wl,ph:rnd()*6.28});
+    }
+  }
+  function size(){var r=cv.getBoundingClientRect();dpr=Math.min(2,devicePixelRatio||1);W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0);build()}
+  var dEl=document.getElementById('dval'), sEl=document.getElementById('dstate'), hyd=document.getElementById('hyd'), autoB=document.getElementById('auto');
+  function stateOf(d){return d<10.6?'Dry · layers collapsed':d<13.8?'One water layer':d<16.8?'Two water layers':'Three layers · swelling'}
+  var P=[], order=[];
+  function frame(t){
+    if(auto&&!reduce){hT=.5-.5*Math.cos(t*.00035);hyd.value=Math.round(hT*100)}
+    h+=(hT-h)*.08;
+    var d=9.6+h*(19.6-9.6), wf=Math.max(0,Math.min(3,(d-9.8)/3)), nW=Math.max(1,Math.ceil(wf-0.001));
+    dEl.innerHTML=d.toFixed(1)+'<small>Å</small>'; var st=stateOf(d); if(sEl.textContent!==st)sEl.textContent=st;
+    if(!drag&&!reduce)ry+=0.0022;
+    var cy=Math.cos(ry), sy=Math.sin(ry), cxr=Math.cos(rx), sxr=Math.sin(rx);
+    var total=(L-1)*19.6+7, sc=Math.min(W*.84/((NX+1)*AA), H*(innerWidth<900?.8:.66)/total), ox=W*(innerWidth<900?.5:.46), oy=H*(innerWidth<900?.5:.42);
+    P.length=A.length;
+    for(var i=0;i<A.length;i++){var a=A[i], y, alpha=1;
+      if(a.l!==undefined){y=(a.l-(L-1)/2)*d+a.dy}
+      else{var lo=(a.g-(L-1)/2)*d+3.2, hi=(a.g+1-(L-1)/2)*d-3.2;
+        if(a.t==='na'){y=(lo+hi)/2}
+        else{alpha=Math.max(0,Math.min(1,wf-a.w)); if(alpha<=0.01){P[i]=null;continue}
+          var slot=Math.min(a.w,nW-1); y=lo+(slot+1)/(nW+1)*(hi-lo)+Math.sin(t*.002+a.ph)*.25}}
+      var x1=a.x*cy-a.z*sy, z1=a.x*sy+a.z*cy, y2=y*cxr-z1*sxr, z2=y*sxr+z1*cxr, f=1600/(1600+z2*sc);
+      P[i]={sx:ox+x1*sc*f, sy:oy-y2*sc*f, z:z2, s:RAD[a.t]*sc*f*1.45, t:a.t, a:alpha};
+    }
+    cx.clearRect(0,0,W,H);
+    cx.lineWidth=1;cx.strokeStyle='rgba(94,234,212,.2)';cx.beginPath();
+    for(var b=0;b<BD.length;b++){var p1=P[BD[b][0]],p2=P[BD[b][1]];if(!p1||!p2)continue;cx.moveTo(p1.sx,p1.sy);cx.lineTo(p2.sx,p2.sy)}
+    cx.stroke();
+    order.length=0;for(var k=0;k<P.length;k++)if(P[k])order.push(k);
+    order.sort(function(m,n){return P[n].z-P[m].z});
+    for(var o=0;o<order.length;o++){var p=P[order[o]];cx.globalAlpha=p.a*(0.5+0.5*Math.max(0,Math.min(1,(18-p.z)/36)));cx.drawImage(SPR[p.t],p.sx-p.s/2,p.sy-p.s/2,p.s,p.s)}
+    cx.globalAlpha=1;
+  }
+  var visible=true;new IntersectionObserver(function(es){visible=es[0].isIntersecting}).observe(hero);
+  function loop(t){if(visible)frame(t);requestAnimationFrame(loop)}
+  cv.addEventListener('pointerdown',function(e){drag={x:e.clientX,y:e.clientY,ry:ry,rx:rx};cv.setPointerCapture(e.pointerId)});
+  cv.addEventListener('pointermove',function(e){if(!drag)return;ry=drag.ry+(e.clientX-drag.x)*.008;rx=Math.max(-0.9,Math.min(.4,drag.rx+(e.clientY-drag.y)*.005));if(reduce)frame(0)});
+  cv.addEventListener('pointerup',function(){drag=null});cv.addEventListener('pointercancel',function(){drag=null});
+  hyd.addEventListener('input',function(){auto=false;autoB.setAttribute('aria-pressed','false');autoB.textContent='Resume';hT=hyd.value/100;if(reduce){h=hT;frame(0)}});
+  autoB.addEventListener('click',function(){auto=!auto;autoB.setAttribute('aria-pressed',auto);autoB.textContent=auto?'Auto':'Resume'});
+  size();addEventListener('resize',function(){size();frame(performance.now())});
+  if(reduce){auto=false;h=hT=.3;frame(0)}else requestAnimationFrame(loop);
+
+  document.getElementById('f9').addEventListener('submit',function(e){e.preventDefault();document.getElementById('f9-out').textContent='Thanks — in the live site this would reach the sales desk.'});
+})();
+</script>
+</body>
+</html>

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Navratna Minerals — Design Concepts</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='2' y='2' width='8' height='8' rx='1.5' fill='%2314171a'/><rect x='12' y='2' width='8' height='8' rx='1.5' fill='%23999'/><rect x='22' y='2' width='8' height='8' rx='1.5' fill='%23999'/><rect x='2' y='12' width='8' height='8' rx='1.5' fill='%23999'/><rect x='12' y='12' width='8' height='8' rx='1.5' fill='%2314171a'/><rect x='22' y='12' width='8' height='8' rx='1.5' fill='%23999'/><rect x='2' y='22' width='8' height='8' rx='1.5' fill='%23999'/><rect x='12' y='22' width='8' height='8' rx='1.5' fill='%23999'/><rect x='22' y='22' width='8' height='8' rx='1.5' fill='%2314171a'/></svg>">
+<title>Narvanta Minerals — Design Concepts</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%2314171a'/><path d='M9 24V8h3l8 10.4V8h3v16h-3l-8-10.4V24z' fill='%23fff'/></svg>">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 :root{
@@ -23,9 +23,7 @@ a{color:inherit}
 /* ---------- gallery ---------- */
 .wrap{max-width:1240px;margin:0 auto;padding:52px max(16px,env(safe-area-inset-left,0px)) 72px}
 .top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:34px}
-.mark{display:grid;grid-template-columns:repeat(3,9px);gap:3px;margin-bottom:18px}
-.mark i{width:9px;height:9px;border-radius:2px;background:#c6cacd}
-.mark i:nth-child(1),.mark i:nth-child(5),.mark i:nth-child(9){background:var(--ink)}
+.mark{display:block;width:34px;height:34px;margin-bottom:18px}
 h1{font-family:var(--f-d);font-size:clamp(1.9rem,4vw,2.8rem);margin:0 0 10px;letter-spacing:-.025em;line-height:1.05}
 .sub{color:var(--dim);max-width:60ch;margin:0}
 .top .btn{flex:none}
@@ -36,8 +34,16 @@ h1{font-family:var(--f-d);font-size:clamp(1.9rem,4vw,2.8rem);margin:0 0 10px;let
 .btn svg{flex:none}
 
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.grid.duo{grid-template-columns:repeat(2,minmax(0,1fr))}
+.group{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin:54px 0 18px;padding-top:22px;border-top:1px solid var(--line)}
+.group:first-of-type{margin-top:0}
+.group h3{font-family:var(--f-d);font-size:1.35rem;margin:0;letter-spacing:-.02em}
+.group p{margin:0;color:var(--dim);font-size:.9rem;max-width:60ch}
+.badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-m);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;background:var(--ink);color:#fff;border-radius:999px;padding:3px 9px 3px 7px}
+.badge::before{content:"";width:6px;height:6px;border-radius:50%;background:#4fd1a5;animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{50%{opacity:.25}}
 @media(max-width:980px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:600px){.grid{grid-template-columns:1fr}}
+@media(max-width:600px){.grid,.grid.duo{grid-template-columns:1fr}}
 .card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s}
 .card:hover{box-shadow:0 18px 36px -26px rgba(0,0,0,.45);transform:translateY(-2px)}
 .thumb{position:relative;aspect-ratio:1440/900;overflow:hidden;background:#e4e6e8;border-bottom:1px solid var(--line);cursor:zoom-in;display:block;width:100%}
@@ -99,9 +105,9 @@ kbd{font-family:var(--f-m);font-size:.74rem;background:var(--card);border:1px so
 <div class="wrap">
   <div class="top">
     <div>
-      <div class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-      <h1>Navratna Minerals — six website concepts</h1>
-      <p class="sub">Each concept is a complete one-page site with the same content: nine product grades, specifications, process, sectors, logistics and an enquiry form. Images are drawn placeholders and every figure is indicative.</p>
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#14171a"/><path d="M9 24V8h3l8 10.4V8h3v16h-3l-8-10.4V24z" fill="#fff"/></svg>
+      <h1>Narvanta Minerals — website concepts</h1>
+      <p class="sub">Each concept is a complete one-page site with the same content: product grades, specifications, process, sectors, logistics and an enquiry form. Images are drawn placeholders and every figure is indicative.</p>
     </div>
     <button class="btn btn-dark" type="button" data-open="0">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1.5" y="2.5" width="13" height="9" rx="1.5"/><path d="M5.5 14h5"/></svg>
@@ -109,7 +115,10 @@ kbd{font-family:var(--f-m);font-size:.74rem;background:var(--card);border:1px so
     </button>
   </div>
 
+  <div class="group"><h3>Classic layouts · 01–06</h3><p>Clean, fast, conventional structure. Light touches of animation.</p></div>
   <div class="grid" id="grid"></div>
+  <div class="group"><h3>Motion concepts · 07–10</h3><p>Built around a moving idea from the business itself: swelling clay, a mine shaft, the crystal lattice, the conveyor line.</p></div>
+  <div class="grid duo" id="grid2"></div>
 
   <div class="tips">
     <span>In preview: <kbd>←</kbd> <kbd>→</kbd> switch design</span>
@@ -154,7 +163,11 @@ kbd{font-family:var(--f-m);font-size:.74rem;background:var(--card);border:1px so
     {f:'03-monolith.html',n:'Monolith',k:'Concept 03 · Dark, bold',c:['#0a0809','#ff5e1f','#ffb43c','#1c1715'],d:'Most dramatic. Molten gradients, animated mineral dust, poster-size type, glowing product cards.'},
     {f:'04-terra.html',n:'Terra',k:'Concept 04 · Light, warm',c:['#eceae4','#1d2a24','#a4572d','#c9a96a'],d:'Earthy and premium. Arch shapes, soft rounded sections, an interactive mineral selector.'},
     {f:'05-meridian.html',n:'Meridian',k:'Concept 05 · Corporate',c:['#ffffff','#0b4f6c','#17b3c9','#e8a33d'],d:'Export-desk B2B. Quote form at the top, shipping-route map, documents list, FAQ. Safest for buyers.'},
-    {f:'06-nine.html',n:'Nine',k:'Concept 06 · Dark, modern',c:['#101214','#ff7a45','#4fd1a5','#9b8cff'],d:'Tile layout built on the 3×3 navratna idea. One colour per mineral, lab-results table.'}
+    {f:'06-grid.html',n:'Grid',k:'Concept 06 · Dark, modern',c:['#101214','#ff7a45','#4fd1a5','#9b8cff'],d:'Bento-tile layout with one colour per mineral and a lab-results table up front.'},
+    {f:'07-swell.html',n:'Swell',mo:1,k:'Concept 07 · Motion, light',c:['#eef5f4','#0e4a5c','#2b9cc0','#b9774a'],d:'Clay blobs swell under your cursor like grains taking on water. Scrolling runs the real swelling-index lab test in a measuring cylinder.'},
+    {f:'08-descent.html',n:'Descent',mo:1,k:'Concept 08 · Motion, dark',c:['#e8cfa4','#4a3a2c','#8a5a2b','#23262a'],d:'Scrolling is a ride down the mine. A live depth gauge, colours that change layer by layer, rising dust, and the products waiting at the pay zone.'},
+    {f:'09-lattice.html',n:'Lattice',mo:1,k:'Concept 09 · Motion, dark',c:['#05070d','#5eead4','#a78bfa','#fbbf77'],d:'A 3D montmorillonite crystal you can drag and hydrate with a slider. Grades shown as a periodic table, lab results as animated gauges.'},
+    {f:'10-conveyor.html',n:'Conveyor',mo:1,k:'Concept 10 · Motion, industrial',c:['#16181b','#f4c20d','#f7f5ee','#c4402f'],d:'A live conveyor belt carries product bags. Scrolling rides sideways through seven plant stations. Grades shown as printed bag labels.'}
   ];
   var DEV={desktop:{w:1440,h:0,label:'Desktop'},tablet:{w:820,h:1180,label:'Tablet'},mobile:{w:390,h:844,label:'Mobile'}};
   var cur=0, dev='desktop', lastFocus=null;
@@ -164,17 +177,19 @@ kbd{font-family:var(--f-m);font-size:.74rem;background:var(--card);border:1px so
   function num(i){return String(i+1).padStart(2,'0')}
 
   /* gallery cards with live thumbnails */
-  grid.innerHTML=D.map(function(x,i){
+  function card(x,i){
     return '<article class="card">'
       +'<div class="thumb" role="button" tabindex="0" data-open="'+i+'" aria-label="Preview '+x.n+'">'
       +'<iframe src="'+x.f+'" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true" title="'+x.n+' thumbnail"></iframe>'
       +'<span class="hover"><span>Preview</span></span></div>'
-      +'<div class="body"><div class="meta"><small>'+x.k+'</small><span class="sw">'+x.c.map(function(c){return '<i style="background:'+c+'"></i>'}).join('')+'</span></div>'
+      +'<div class="body"><div class="meta"><small>'+x.k+(x.mo?' <span class="badge">Motion</span>':'')+'</small><span class="sw">'+x.c.map(function(c){return '<i style="background:'+c+'"></i>'}).join('')+'</span></div>'
       +'<h2>'+x.n+'</h2><p>'+x.d+'</p>'
       +'<div class="acts"><button class="btn btn-dark" type="button" data-open="'+i+'">Preview</button>'
       +'<button class="btn" type="button" data-open="'+i+'" data-dev="mobile">Mobile view</button>'
       +'<a class="btn" href="'+x.f+'" target="_blank" rel="noopener">Open page ↗</a></div></div></article>';
-  }).join('');
+  }
+  grid.innerHTML=D.map(function(x,i){return x.mo?'':card(x,i)}).join('');
+  $('grid2').innerHTML=D.map(function(x,i){return x.mo?card(x,i):''}).join('');
 
   function scaleThumbs(){
     document.querySelectorAll('.thumb').forEach(function(t){t.style.setProperty('--s',t.clientWidth/1440)});
